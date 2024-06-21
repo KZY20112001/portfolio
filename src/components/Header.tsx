@@ -2,12 +2,16 @@ import { Flex, Text, Tooltip, background } from "@chakra-ui/react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 import { lato } from "@/app/fonts";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const GITHUB_URL = "https://github.com/KZY20112001";
 const LINKEDIN_URL =
   "https://www.linkedin.com/in/christopher-khant-zayar-5057051bb/";
 
 const Header = () => {
+  const { isDarkMode } = useContext(ThemeContext);
+
   return (
     <Flex
       position={"sticky"}
@@ -24,23 +28,27 @@ const Header = () => {
       >
         christopher khant zayar
       </Text>
-      <Flex gap="4rem" alignItems={"center"}>
-        <a
-          href={LINKEDIN_URL}
-          className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white dark:border-black hover:border-black hover:dark:border-white dark:hover:bg-white hover:bg-slate-100"
-        >
-          <Tooltip label="linkedin" hasArrow>
+      <Flex gap="2rem" alignItems={"center"}>
+        <Tooltip label="linkedin">
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white  hover:border-slate-100   hover:bg-slate-100"
+          >
             <FaLinkedinIn />
-          </Tooltip>
-        </a>
-        <a
-          href={GITHUB_URL}
-          className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white dark:border-black hover:border-black hover:dark:border-white dark:hover:bg-white hover:bg-slate-100"
-        >
-          <Tooltip label="github" hasArrow>
+          </a>
+        </Tooltip>
+        <Tooltip label="github">
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white  hover:border-slate-100  hover:bg-slate-100"
+          >
             <FaGithub />
-          </Tooltip>
-        </a>
+          </a>
+        </Tooltip>
         <Text
           className={lato.className}
           fontSize={"lg"}
@@ -51,7 +59,8 @@ const Header = () => {
           borderColor={"white"}
           _hover={{
             cursor: "pointer",
-            borderColor: "black",
+            backgroundColor: "rgb(241 245 249)",
+            borderColor: "rgb(241 245 249)",
           }}
         >
           contact me

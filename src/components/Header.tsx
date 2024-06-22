@@ -1,5 +1,7 @@
-import { Flex, Text, Tooltip, background } from "@chakra-ui/react";
+import { Flex, Text, Tooltip } from "@chakra-ui/react";
+
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { MdDarkMode } from "react-icons/md";
 
 import { lato } from "@/app/fonts";
 import { useContext } from "react";
@@ -10,16 +12,18 @@ const LINKEDIN_URL =
   "https://www.linkedin.com/in/christopher-khant-zayar-5057051bb/";
 
 const Header = () => {
-  const { isDarkMode } = useContext(ThemeContext);
-
+  const { isDarkMode, switchTheme } = useContext(ThemeContext);
   return (
     <Flex
-      position={"sticky"}
+      position={"fixed"}
+      width="full"
+      zIndex={50}
       px={"10rem"}
       py={"1rem"}
-      borderWidth="1px"
+      borderBottom="1px"
       borderColor={"black"}
       justifyContent={"space-between"}
+      backgroundColor={isDarkMode ? "black" : "white"}
     >
       <Text
         fontSize={"2xl"}
@@ -65,6 +69,11 @@ const Header = () => {
         >
           contact me
         </Text>
+
+        <MdDarkMode
+          onClick={switchTheme}
+          className="dark:invert cursor-pointer"
+        />
       </Flex>
     </Flex>
   );

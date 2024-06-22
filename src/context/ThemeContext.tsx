@@ -17,8 +17,8 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
 
   const switchTheme = () => {
     const newTheme = isDarkMode ? "light" : "dark";
-    setIsDarkMode(!isDarkMode);
     localStorage.setItem("theme", newTheme);
+    setIsDarkMode(!isDarkMode);
   };
 
   useEffect(() => {
@@ -26,18 +26,17 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     const hasDarkPreference = window.matchMedia(
       "(prefers-color-scheme:dark)"
     ).matches;
-
     if (!themeValue) {
       localStorage.setItem("theme", hasDarkPreference ? "dark" : "light");
       setIsDarkMode(hasDarkPreference);
     } else if (themeValue === "dark") {
       document.documentElement.classList.add("dark");
-      setIsDarkMode(hasDarkPreference);
+      setIsDarkMode(true);
     } else if (themeValue === "light") {
       document.documentElement.classList.remove("dark");
       setIsDarkMode(false);
     }
-  }, []);
+  }, [isDarkMode]);
 
   return (
     <ThemeContext.Provider value={{ isDarkMode: isDarkMode, switchTheme }}>

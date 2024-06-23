@@ -6,7 +6,7 @@ const Works = () => {
     <Flex
       h={"100vh"}
       px={"10rem"}
-      scrollSnapAlign={"center"}
+      scrollSnapAlign={"start"}
       justifyContent={"center"}
       flexDir={"column"}
     >

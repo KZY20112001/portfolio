@@ -1,13 +1,11 @@
-import { Lato, Inter } from "next/font/google";
+import { Raleway, Open_Sans } from "next/font/google";
 
-export const lato = Lato({
-  weight: ["700"],
-  style: ["normal", "italic"],
+export const raleway = Raleway({
   subsets: ["latin"],
   display: "swap",
 });
 
-export const inter = Inter({
+export const open_sans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
 });

@@ -3,8 +3,9 @@ import { Flex, Text, Tooltip } from "@chakra-ui/react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 
-import { lato } from "@/app/fonts";
 import { useContext } from "react";
+
+import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 
 const GITHUB_URL = "https://github.com/KZY20112001";
@@ -21,14 +22,16 @@ const Header = () => {
       px={"10rem"}
       py={"1rem"}
       borderBottom="1px"
-      borderColor={"black"}
+      borderColor={isDarkMode ? "white" : "black"}
       justifyContent={"space-between"}
       backgroundColor={isDarkMode ? "black" : "white"}
     >
       <Text
         fontSize={"2xl"}
-        className={lato.className}
+        fontWeight={"bold"}
         _hover={{ cursor: "pointer" }}
+        textColor={isDarkMode ? "white" : "black"}
+        className={raleway.className}
       >
         christopher khant zayar
       </Text>
@@ -38,9 +41,9 @@ const Header = () => {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
-            className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white  hover:border-slate-100   hover:bg-slate-100"
+            className="cursor-pointer rounded-md px-8 py-2 hover:bg-slate-200  dark:hover:bg-slate-600"
           >
-            <FaLinkedinIn />
+            <FaLinkedinIn className="dark:invert" />
           </a>
         </Tooltip>
         <Tooltip label="github">
@@ -48,31 +51,29 @@ const Header = () => {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="cursor-pointer rounded-md px-8 py-2 border-[1px] border-white  hover:border-slate-100  hover:bg-slate-100"
+            className="cursor-pointer rounded-md px-8 py-2 hover:bg-slate-200  dark:hover:bg-slate-600"
           >
-            <FaGithub />
+            <FaGithub className="dark:invert" />
           </a>
         </Tooltip>
         <Text
-          className={lato.className}
           fontSize={"lg"}
+          fontWeight={"bold"}
           px="1rem"
           py="0.25rem"
           borderRadius={"md"}
-          borderWidth={"1px"}
-          borderColor={"white"}
+          textColor={isDarkMode ? "white" : "black"}
           _hover={{
             cursor: "pointer",
-            backgroundColor: "rgb(241 245 249)",
-            borderColor: "rgb(241 245 249)",
+            backgroundColor: isDarkMode ? "rgb(71 85 105)" : "rgb(226 232 240)",
           }}
+          className={raleway.className}
         >
           contact me
         </Text>
-
         <MdDarkMode
           onClick={switchTheme}
-          className="dark:invert cursor-pointer"
+          className="dark:invert cursor-pointer absolute right-24 top-7"
         />
       </Flex>
     </Flex>

@@ -1,5 +1,4 @@
 import { Flex, Text, Tooltip } from "@chakra-ui/react";
-
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 
@@ -7,10 +6,7 @@ import { useContext } from "react";
 
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
-
-const GITHUB_URL = "https://github.com/KZY20112001";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/christopher-khant-zayar-5057051bb/";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/constants/contacts";
 
 const Header = () => {
   const { isDarkMode, switchTheme } = useContext(ThemeContext);
@@ -56,21 +52,16 @@ const Header = () => {
             <FaGithub className="dark:invert" />
           </a>
         </Tooltip>
-        <Text
-          fontSize={"lg"}
-          fontWeight={"bold"}
-          px="1rem"
-          py="0.25rem"
-          borderRadius={"md"}
-          textColor={isDarkMode ? "white" : "black"}
-          _hover={{
-            cursor: "pointer",
-            backgroundColor: isDarkMode ? "rgb(71 85 105)" : "rgb(226 232 240)",
-          }}
-          className={raleway.className}
+
+        <a
+          href={`mailto:${EMAIL}`}
+          className={`${
+            isDarkMode ? "text-white" : "text-black"
+          } text-lg font-bold px-4 py-1 rounded-md hover:cursor-pointer font-raleway hover:bg-slate-200  dark:hover:bg-slate-600`}
         >
           contact me
-        </Text>
+        </a>
+
         <MdDarkMode
           onClick={switchTheme}
           className="dark:invert cursor-pointer absolute right-24 top-7"

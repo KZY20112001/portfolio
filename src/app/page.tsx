@@ -1,14 +1,14 @@
 "use client";
 import Header from "@/components/Header";
 import Intro from "@/components/Intro";
-import Works from "@/components/Works";
+import Projects from "@/components/Projects";
 
 const Home = () => {
   return (
-    <main className="bg-white dark:bg-black max-h-screen w-full snap-y snap-mandatory scroll-smooth overflow-y-scroll relative">
+    <main className="bg-white dark:bg-black max-h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-scroll relative ">
       <Header />
       <Intro />
-      <Works />
+      <Projects />
     </main>
   );
 };

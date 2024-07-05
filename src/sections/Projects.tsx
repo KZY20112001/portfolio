@@ -6,8 +6,7 @@ import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { projects } from "@/constants/projects";
 import { Project } from "@/definitions/project";
-import ProjectCard from "./Projects/ProjectCard";
-import ProjectModal from "./Projects/ProjectModal";
+import { ProjectCard, ProjectModal } from "@/components/Project";
 
 const Projects = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -15,7 +14,6 @@ const Projects = () => {
   const [curProject, setCurProject] = useState<Project | null>(null);
   return (
     <Flex
-      px={"10rem"}
       pt={["8rem"]}
       minH={["", "100vh"]}
       width="full"

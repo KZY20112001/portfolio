@@ -10,7 +10,6 @@ const Intro = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
     <Flex
-      px={"10rem"}
       h={"100vh"}
       w="full"
       justifyContent={"center"}

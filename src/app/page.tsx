@@ -1,14 +1,16 @@
 "use client";
-import Header from "@/components/Header";
-import Intro from "@/components/Intro";
-import Projects from "@/components/Projects";
+import { Header, Intro, Experiences, Projects } from "@/sections";
+import { Box } from "@chakra-ui/react";
 
 const Home = () => {
   return (
-    <main className="bg-white dark:bg-black max-h-screen w-screen snap-y snap-mandatory scroll-smooth overflow-y-scroll relative ">
+    <main className="bg-white dark:bg-black max-h-screen w-screen snap-y snap-center scroll-smooth overflow-y-scroll relative ">
       <Header />
-      <Intro />
-      <Projects />
+      <Box px="10rem">
+        <Intro />
+        <Experiences />
+        <Projects />
+      </Box>
     </main>
   );
 };

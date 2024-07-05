@@ -14,7 +14,7 @@ import {
 import { FC, useContext, useState } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-import Image from "@/components/Image";
+import Image from "@/components/CustomImage";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions/project";
 import { AnimatePresence, motion } from "framer-motion";
@@ -166,28 +166,22 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           </Text>
 
           <Flex
-            gap="2rem"
             textColor={isDarkMode ? "white" : "black"}
             alignItems={"center"}
+            gap="1.5rem"
           >
-            <Text className={open_sans.className} fontWeight={"semibold"}>
-              Relevant Skills:
-            </Text>
-
-            <Flex gap="1.5rem">
-              {project?.techStack.map((skill, index) => (
-                <Text
-                  borderRadius="md"
-                  backgroundColor={isDarkMode ? "#475569" : "#e2e8f0"}
-                  px="1rem"
-                  py="0.25rem"
-                  fontWeight={"semibold"}
-                  key={index + skill}
-                >
-                  {skill}
-                </Text>
-              ))}
-            </Flex>
+            {project?.techStack.map((skill, index) => (
+              <Text
+                borderRadius="md"
+                backgroundColor={isDarkMode ? "#212934" : "#e2e8f0"}
+                px="1rem"
+                py="0.25rem"
+                fontWeight={"semibold"}
+                key={index + skill}
+              >
+                {skill}
+              </Text>
+            ))}
           </Flex>
         </ModalBody>
         <ModalFooter

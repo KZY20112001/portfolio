@@ -32,6 +32,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
+      react-text-transition:
+        specifier: ^3.1.0
+        version: 3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -781,6 +784,30 @@ packages:
 
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+
+  '@react-spring/animated@9.7.3':
+    resolution: {integrity: sha512-5CWeNJt9pNgyvuSzQH+uy2pvTg8Y4/OisoscZIR8/ZNLIOI+CatFBhGZpDGTF/OzdNFsAoGk3wiUYTwoJ0YIvw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/core@9.7.3':
+    resolution: {integrity: sha512-IqFdPVf3ZOC1Cx7+M0cXf4odNLxDC+n7IN3MDcVCTIOSBfqEcBebSv+vlY5AhM0zw05PDbjKrNmBpzv/AqpjnQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/shared@9.7.3':
+    resolution: {integrity: sha512-NEopD+9S5xYyQ0pGtioacLhL2luflh6HACSSDUZOwLHoxA5eku1UPuqcJqjwSD6luKjjLfiLOspxo43FUHKKSA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@react-spring/types@9.7.3':
+    resolution: {integrity: sha512-Kpx/fQ/ZFX31OtlqVEFfgaD1ACzul4NksrvIgYfIFq9JpDHFwQkMVZ10tbo0FU/grje4rcL4EIrjekl3kYwgWw==}
+
+  '@react-spring/web@9.7.3':
+    resolution: {integrity: sha512-BXt6BpS9aJL/QdVqEIX9YoUy8CE6TJrU0mNCqSoxdXlIeNcEBWOfIyE6B14ENNsyQKS3wOWkiJfco0tCr/9tUg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   '@rushstack/eslint-patch@1.10.3':
     resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
@@ -1993,6 +2020,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  react-text-transition@3.1.0:
+    resolution: {integrity: sha512-NtXEVAXvSh78+8JAnrVjpbftzD4kPowacv4GB2Nyq9C/8ko6fSm6M/XvKWQLCaZi68i9F28b++Sp8uVThlzLyg==}
+    peerDependencies:
+      react: '>=18.0.0'
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -3315,6 +3347,35 @@ snapshots:
     optional: true
 
   '@popperjs/core@2.11.8': {}
+
+  '@react-spring/animated@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/core@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/animated': 9.7.3(react@18.3.1)
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/shared@9.7.3(react@18.3.1)':
+    dependencies:
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+
+  '@react-spring/types@9.7.3': {}
+
+  '@react-spring/web@9.7.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@react-spring/animated': 9.7.3(react@18.3.1)
+      '@react-spring/core': 9.7.3(react@18.3.1)
+      '@react-spring/shared': 9.7.3(react@18.3.1)
+      '@react-spring/types': 9.7.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@rushstack/eslint-patch@1.10.3': {}
 
@@ -4697,6 +4758,13 @@ snapshots:
       tslib: 2.6.3
     optionalDependencies:
       '@types/react': 18.3.3
+
+  react-text-transition@3.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@react-spring/web': 9.7.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+    transitivePeerDependencies:
+      - react-dom
 
   react@18.3.1:
     dependencies:

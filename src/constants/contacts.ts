@@ -1,4 +1,4 @@
-const EMAIL = "christopher.khant.project@gmail.com";
+const EMAIL = "christopher.khant.work@gmail.com";
 
 const GITHUB_URL = "https://github.com/KZY20112001";
 

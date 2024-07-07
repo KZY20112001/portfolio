@@ -1,5 +1,5 @@
 export type Experience = {
-  position: string;
+  title: string;
   company: string;
   companyShortName: string;
   description: string;
@@ -7,4 +7,5 @@ export type Experience = {
   endDate: string;
   techStack: string[];
   companyWebsite?: string;
+  companyLogo: string;
 };

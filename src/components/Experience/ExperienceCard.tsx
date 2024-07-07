@@ -4,7 +4,6 @@ import {
   Collapse,
   useDisclosure,
   Text,
-  textDecoration,
 } from "@chakra-ui/react";
 import TextTransition, { presets } from "react-text-transition";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
@@ -14,6 +13,7 @@ import React, { FC, useContext } from "react";
 import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions/experience";
+import { Image } from "@/components";
 
 interface ExperienceProps {
   experience: Experience;
@@ -35,38 +35,55 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
         <TiArrowSortedDown className="mt-1.5 dark:invert" onClick={onToggle} />
       )}
       <Flex w="full" flexDir={"column"}>
-        <Flex justifyContent={"space-between"} w="full" h={"4rem"}>
+        <Flex w="full" h={"4rem"}>
           <Text
+            ml="0"
+            mr="auto"
             fontSize="xl"
             fontWeight={"bold"}
             textColor={isDarkMode ? "white" : "black"}
             className={quicksand.className}
           >
-            {experience.position}
+            {experience.title}
           </Text>
+          <Flex maxW="30%" mr="0" ml="auto" gap="1rem">
+            <Flex flexDir={"column"} className={quicksand.className}>
+              <a
+                href={experience.companyWebsite}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TextTransition
+                  springConfig={presets.stiff}
+                  inline
+                  className={`dark:invert font-bold text-black text-xl mr-0 ml-auto `}
+                >
+                  {isOpen ? experience.company : experience.companyShortName}
+                </TextTransition>
+              </a>
 
-          <Flex flexDir={"column"} className={quicksand.className} maxW="30%">
+              <TextTransition
+                springConfig={presets.stiff}
+                inline
+                className={`dark:invert text-md font-bold text-black mr-0 ml-auto`}
+              >
+                {isOpen && `${experience.startDate} - ${experience.endDate}`}
+              </TextTransition>
+            </Flex>
             <a
               href={experience.companyWebsite}
               target="_blank"
               rel="noreferrer"
             >
-              <TextTransition
-                springConfig={presets.stiff}
-                inline
-                className={`dark:invert font-bold text-black text-xl mr-0 ml-auto `}
-              >
-                {isOpen ? experience.company : experience.companyShortName}
-              </TextTransition>
+              <Image
+                src={experience.companyLogo}
+                alt="logo"
+                height={5}
+                width={5}
+                mt="0.25rem"
+                className="dark:invert"
+              />
             </a>
-
-            <TextTransition
-              springConfig={presets.stiff}
-              inline
-              className={`dark:invert text-md font-bold text-black mr-0 ml-auto`}
-            >
-              {isOpen && `${experience.startDate} - ${experience.endDate}`}
-            </TextTransition>
           </Flex>
         </Flex>
 

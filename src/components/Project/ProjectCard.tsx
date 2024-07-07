@@ -1,7 +1,7 @@
 import { ThemeContext } from "@/context/ThemeContext";
 import { Box, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
 import React, { FC, useContext, useState } from "react";
-import Image from "@/components/CustomImage";
+import { Image } from "@/components";
 import { quicksand, raleway } from "@/app/fonts";
 
 interface ProjectCardInterface {

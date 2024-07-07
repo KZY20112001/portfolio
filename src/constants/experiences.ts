@@ -2,8 +2,8 @@ import { Experience } from "@/definitions/experience";
 
 const experiences: Experience[] = [
   {
-    position: "Backend Engineer Intern",
-    company: "KLASS Engineering and Solutions Ptd",
+    title: "Backend Engineer Intern",
+    company: "KLASS Engineering & Solutions",
     companyShortName: "KLASS",
     description:
       "My responsibilities focused on the backend development, where I designed and implemented an in-house module that enables users to authenticate through various methods of their choice (JWTs, Session Cookies etc). Additionally, I played a pivotal role in implementing an API Gateway and other microservices using Tyk, enhancing system scalability and efficiency.",
@@ -18,11 +18,12 @@ const experiences: Experience[] = [
       "Tyk",
       "Docker",
     ],
-    companyWebsite: "https://klasses.com.sg/",
+    companyWebsite: "https://klasses.com.sg",
+    companyLogo: "/images/klass-logo.png",
   },
   {
-    position: "Software Engineer Intern",
-    company: "KLASS Engineering and Solutions Ptd",
+    title: "Software Engineer Intern",
+    company: "KLASS Engineering & Solutions",
     companyShortName: "KLASS",
     description:
       "While working on the frontend, I transformed a legacy codebase into a modern, responsive design using the layered architecture. I also revamped the frontend authentication mechanism, ensuring robust end-to-end testing. On the backend, I developed middlewares to standardize data formats according to REST API standards. Moreover, I restructured multiple backend endpoints and optimized SQL queries, resulting in significant performance improvements.",
@@ -38,10 +39,11 @@ const experiences: Experience[] = [
       "Docker",
     ],
     companyWebsite: "https://klasses.com.sg/",
+    companyLogo: "/images/klass-logo.png",
   },
 
   {
-    position: "Fullstack Developer Intern",
+    title: "Fullstack Developer Intern",
     company: "SERIAL CO_ Creative Tech Studio",
     companyShortName: "SERIAL CO_",
     description:
@@ -56,9 +58,10 @@ const experiences: Experience[] = [
       "GraphQL",
     ],
     companyWebsite: "https://serial.sg/",
+    companyLogo: "/images/serial_co-logo.png",
   },
   {
-    position: "Data Analyst Intern",
+    title: "Data Analyst Intern",
     company: "Nanyang Business School, NTU",
     companyShortName: "NBS",
     description:
@@ -66,6 +69,7 @@ const experiences: Experience[] = [
     startDate: "May 2022",
     endDate: "July 2022",
     techStack: ["Python", "Pandas", "Selenium", "Jupyter"],
+    companyLogo: "/images/ntu-logo.webp",
   },
 ];
 

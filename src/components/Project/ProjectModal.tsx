@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions/project";
-import ImageCarousel from "@/components/ImageCarousel";
+import { ImageCarousel } from "@/components";
 
 interface ProjectModalProps {
   isOpen: boolean;

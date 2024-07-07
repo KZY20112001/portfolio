@@ -28,7 +28,6 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
       display="flex"
       borderColor={isDarkMode ? "#989494" : "#656565"}
       flexGrow={1}
-      pb="1rem"
     >
       {isOpen ? (
         <TiArrowSortedUp className="mt-1.5 dark:invert" onClick={onToggle} />
@@ -90,6 +89,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             gap="1.5rem"
             maxW={"80%"}
             flexWrap={"wrap"}
+            mb="2rem"
           >
             {experience.techStack.map((skill, i) => (
               <Text

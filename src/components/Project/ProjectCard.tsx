@@ -6,13 +6,13 @@ import { quicksand, raleway } from "@/app/fonts";
 
 interface ProjectCardInterface {
   name: string;
-  companyShortName: string;
+  organizationShortName?: string;
   thumbnail: string;
 }
 
 const ProjectCard: FC<ProjectCardInterface> = ({
   name,
-  companyShortName,
+  organizationShortName,
   thumbnail,
 }) => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -61,7 +61,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
       {isHovered && (
         <>
           <CardHeader
-            fontSize="2.25rem"
+            fontSize="3xl"
             fontWeight={"bold"}
             className={quicksand.className}
             zIndex={2}
@@ -75,7 +75,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
             className={raleway.className}
             zIndex={2}
           >
-            {companyShortName}
+            {organizationShortName}
           </CardFooter>
         </>
       )}

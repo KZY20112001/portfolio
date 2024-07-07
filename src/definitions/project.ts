@@ -1,10 +1,12 @@
 export type Project = {
   name: string;
-  company: string;
-  companyShortName: string;
+  organization?: string;
+  organizationShortName?: string;
   description: string;
   thumbnail: string;
-  images: string[];
   techStack: string[];
-  companyWebsite?: string;
-};
+  website?: string;
+} & (ImagesProps | VideoProps);
+
+type ImagesProps = { mediaType: "images"; images: string[] };
+type VideoProps = { mediaType: "video"; video: string };

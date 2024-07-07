@@ -9,12 +9,13 @@ const Experiences = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
     <Flex
-      py={["8rem"]}
+      pt={["8rem"]}
+      pb={["4rem"]}
       minH={["", "100vh"]}
       width="full"
       scrollSnapAlign={"start"}
       flexDir={"column"}
-      gap="2rem"
+      gap="4rem"
       position="relative"
     >
       <Text

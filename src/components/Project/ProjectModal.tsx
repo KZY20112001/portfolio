@@ -9,15 +9,14 @@ import {
   Text,
   ModalFooter,
   Flex,
-  HStack,
 } from "@chakra-ui/react";
-import { FC, useContext, useState } from "react";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import ReactPlayer from "react-player";
 
-import Image from "@/components/CustomImage";
+import { FC, useContext, useState } from "react";
+
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions/project";
-import { AnimatePresence, motion } from "framer-motion";
+import ImageCarousel from "@/components/ImageCarousel";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -27,46 +26,14 @@ interface ProjectModalProps {
 
 const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
   const { isDarkMode } = useContext(ThemeContext);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
 
-  const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-  };
-
-  const prevImage = () => {
-    setDirection(-1);
-    project &&
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
-      );
-  };
-
-  const nextImage = () => {
-    setDirection(1);
-    project &&
-      setCurrentIndex((prevIndex) =>
-        prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-      );
-  };
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={"6xl"} isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} size={"4xl"} isCentered>
       <ModalOverlay />
       <ModalContent
         height={["3xl"]}
         bgColor={isDarkMode ? "#0d1012" : "white"}
-        borderRadius={"lg"}
+        borderRadius={"2xl"}
       >
         <Box
           w="full"
@@ -76,59 +43,26 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           position="relative"
           overflow="hidden"
           zIndex={1}
-          borderRadius={"lg"}
+          borderRadius={"2xl"}
         >
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
-              style={{ position: "absolute", width: "100%", height: "100%" }}
+          {project?.mediaType === "images" ? (
+            <ImageCarousel images={project.images} />
+          ) : (
+            <Flex
+              justifyContent={"center"}
+              alignItems={"center"}
+              h="full"
+              w="full"
             >
-              <Image
-                src={project?.images[currentIndex]!}
-                objectFit={"contain"}
-                position="absolute"
-                left={0}
-                right={0}
-                top={0}
-                bottom={0}
-                margin="auto"
-                width="250"
-                height="250"
-                alt="thumbnail"
+              <ReactPlayer
+                url={project?.video}
+                width={"500px"}
+                height={"300px"}
+                light
+                controls
+                loop
               />
-            </motion.div>
-          </AnimatePresence>
-
-          {project && project.images.length > 1 && (
-            <HStack
-              position="absolute"
-              top="50%"
-              width="100%"
-              justify="space-between"
-              transform="translateY(-50%)"
-            >
-              <IoIosArrowBack
-                onClick={prevImage}
-                className={`${
-                  isDarkMode ? "bg-[#161a1d]" : "bg-[#f4eded] m-8"
-                } cursor-pointer`}
-              />
-              <IoIosArrowForward
-                onClick={nextImage}
-                className={`${
-                  isDarkMode ? "bg-[#161a1d]" : "bg-[#f4eded] m-8"
-                } cursor-pointer`}
-              />
-            </HStack>
+            </Flex>
           )}
         </Box>
         <ModalHeader
@@ -146,23 +80,11 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           <Text
             className={open_sans.className}
             textColor={isDarkMode ? "white" : "black"}
-            h={["12rem"]}
+            maxH={["12rem"]}
             overflowY="scroll"
             mb="2rem"
           >
             {project?.description}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
-            perspiciatis eius iusto eum, eligendi consectetur perferendis
-            similique, hic quaerat voluptate impedit ad, incidunt eaque ipsum
-            reprehenderit nisi placeat architecto? Hic perspiciatis eligendi at
-            modi in. Ea alias dicta cum quibusdam nisi, ex suscipit cumque
-            architecto vel aut voluptatibus illo sit sint reiciendis possimus,
-            corrupti dolorem tempora accusamus blanditiis expedita placeat
-            voluptate! Ad qui, laboriosam tempore similique corporis magnam quos
-            optio nisi architecto nulla beatae cum eum expedita eius quidem iste
-            incidunt maiores alias molestias maxime dolor illum. Amet eius,
-            deserunt atque perspiciatis sapiente eos laudantium sit quod
-            inventore distinctio iste.
           </Text>
 
           <Flex
@@ -191,18 +113,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           className={raleway.className}
           ml="0"
         >
-          {project?.companyWebsite ? (
-            <a
-              href={project?.companyWebsite}
-              target="_blank"
-              rel="noreferrer"
-              className="cursor-pointer"
-            >
-              {project?.company}
-            </a>
-          ) : (
-            project?.company
-          )}
+          {project?.organization}
         </ModalFooter>
       </ModalContent>
     </Modal>

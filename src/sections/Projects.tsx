@@ -15,11 +15,12 @@ const Projects = () => {
   return (
     <Flex
       pt={["8rem"]}
+      pb={["4rem"]}
       minH={["", "100vh"]}
       width="full"
       scrollSnapAlign={"center"}
       flexDir={"column"}
-      gap="2rem"
+      gap="4rem"
       position="relative"
     >
       <ProjectModal isOpen={isOpen} onClose={onClose} project={curProject!} />
@@ -42,7 +43,7 @@ const Projects = () => {
       >
         {projects.map((project) => (
           <GridItem
-            key={project.name + project.company}
+            key={project.name + project.organization}
             h={["28rem"]}
             onClick={() => {
               setCurProject(project);
@@ -51,7 +52,7 @@ const Projects = () => {
           >
             <ProjectCard
               name={project.name}
-              companyShortName={project.companyShortName}
+              organizationShortName={project.organizationShortName}
               thumbnail={project.thumbnail}
             />
           </GridItem>

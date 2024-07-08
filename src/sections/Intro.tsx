@@ -37,8 +37,8 @@ const Intro = () => {
         textColor={isDarkMode ? "white" : "black"}
         className={open_sans.className}
       >
-        I am passionate about developing software that can make a meaningful
-        impact on our society.
+        I am a final-year Computer Science undergraduate who is passionate about
+        developing software that can make a meaningful impact on our society.
       </Text>
       <Text
         fontSize={"xl"}

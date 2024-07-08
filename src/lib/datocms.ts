@@ -17,7 +17,6 @@ interface PerformRequestParams {
 }
 
 const dedupedFetch = cache(async (serializedInit: string) => {
-  console.log("inside deduped ");
   const response = await fetch(
     "https://graphql.datocms.com/",
     JSON.parse(serializedInit)

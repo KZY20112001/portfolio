@@ -14,6 +14,7 @@ import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions/experience";
 import { Image } from "@/components";
+import exp from "constants";
 
 interface ExperienceProps {
   experience: Experience;
@@ -56,7 +57,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 <TextTransition
                   springConfig={presets.stiff}
                   inline
-                  className={`dark:invert font-bold text-black text-xl mr-0 ml-auto `}
+                  className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
                 >
                   {isOpen ? experience.company : experience.companyShortName}
                 </TextTransition>
@@ -65,25 +66,40 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               <TextTransition
                 springConfig={presets.stiff}
                 inline
-                className={`dark:invert text-md font-bold text-black mr-0 ml-auto`}
+                className={`dark:text-white text-md font-bold text-black mr-0 ml-auto`}
               >
                 {isOpen && `${experience.startDate} - ${experience.endDate}`}
               </TextTransition>
             </Flex>
-            <a
-              href={experience.companyWebsite}
-              target="_blank"
-              rel="noreferrer"
-            >
+            {experience.companyWebsite ? (
+              <a
+                href={experience.companyWebsite}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src={experience.companyLogo}
+                  alt="logo"
+                  height={5}
+                  width={5}
+                  mt="0.25rem"
+                  className={`${
+                    experience.companyShortName === "NBS" ? "" : "dark:invert"
+                  }`}
+                />
+              </a>
+            ) : (
               <Image
                 src={experience.companyLogo}
                 alt="logo"
                 height={5}
                 width={5}
                 mt="0.25rem"
-                className="dark:invert"
+                className={`${
+                  experience.companyShortName === "NBS" ? "" : "dark:invert"
+                }`}
               />
-            </a>
+            )}
           </Flex>
         </Flex>
 
@@ -111,12 +127,13 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             {experience.techStack.map((skill, i) => (
               <Text
                 borderRadius="md"
-                backgroundColor={isDarkMode ? "#212934" : "#f3f1f1"}
+                bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
                 py="0.25rem"
                 fontWeight={"semibold"}
                 className={open_sans.className}
                 key={i + skill}
+                _hover={{ cursor: "pointer" }}
               >
                 {skill}
               </Text>

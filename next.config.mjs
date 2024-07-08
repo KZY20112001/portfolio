@@ -6,6 +6,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.datocms-assets.com",
         pathname: "/136437/*",
+        port: "",
       },
     ],
   },

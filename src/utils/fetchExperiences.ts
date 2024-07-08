@@ -1,13 +1,13 @@
 import { Experience } from "@/definitions/experience";
 import { performRequest } from "@/lib/datocms";
 
-interface TechStack {
+type TechStack = {
   name: string;
-}
+};
 
-interface CompanyLogo {
+type CompanyLogo = {
   url: string;
-}
+};
 
 interface ExperienceData {
   title: string;
@@ -30,11 +30,11 @@ function formatDate(dateString: string): string {
   const monthNames = [
     "Jan",
     "Feb",
-    "March",
-    "April",
+    "Mar",
+    "Apr",
     "May",
     "Jun",
-    "July",
+    "Jul",
     "Aug",
     "Sep",
     "Oct",
@@ -43,7 +43,7 @@ function formatDate(dateString: string): string {
   ];
   const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
-  return `${month} - ${year}`;
+  return `${month} ${year}`;
 }
 
 export const fetchExperiences = async () => {

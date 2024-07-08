@@ -5,9 +5,10 @@ const projects: Project[] = [
     name: "Portfolio Website",
     description: "",
     mediaType: "images",
-    images: [""],
-    thumbnail: "",
-    techStack: ["Next (Framework)", "Chakra UI", ""],
+    images: ["/images/portfolio-thumbnail.png"],
+    thumbnail: "/images/portfolio-thumbnail.png",
+    techStack: ["Next (Framework)", "Chakra UI", "DatoCMS", "GraphQL"],
+    website: "localhost:3000",
   },
 
   {
@@ -39,7 +40,7 @@ const projects: Project[] = [
     organization: "NTU Open Source Society",
     organizationShortName: "NTUOSS",
     description:
-      "Developed as a member of NTU Open Source Society, Jammin is a team project which provides a mobile platform for designed for music enthusiasts to connect with like-minded individuals and play music together. ",
+      "Developed as a member of NTU Open Source Society, Jammin is a team project which provides a mobile platform for designed for music enthusiasts to connect with like-minded individuals and play music together.",
     mediaType: "images",
     images: [
       "/images/jammin-1.png",

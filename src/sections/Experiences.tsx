@@ -1,12 +1,13 @@
 import { Flex, List, Text } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
 
 import { useContext } from "react";
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { ExperienceCard } from "@/components/Experience";
 import { fetchExperiences } from "@/utils/fetchExperiences";
-import { useQuery } from "@tanstack/react-query";
 import { Experience } from "@/definitions/experience";
+import { Error, Loading } from "@/components";
 
 const Experiences = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -15,8 +16,6 @@ const Experiences = () => {
     queryFn: fetchExperiences,
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occurred: {(error as Error).message}</div>;
   return (
     <Flex
       pt={["8rem"]}
@@ -37,15 +36,18 @@ const Experiences = () => {
       >
         Relevant Experiences
       </Text>
-
-      <List w="full" display="flex" flexDir={"column"} gap="2rem">
-        {data?.map((experience) => (
-          <ExperienceCard
-            experience={experience}
-            key={experience.startDate + experience.endDate}
-          />
-        ))}
-      </List>
+      {isLoading && <Loading />}
+      {error && <Error error={error} />}
+      {data && (
+        <List w="full" display="flex" flexDir={"column"} gap="2rem">
+          {data.map((experience) => (
+            <ExperienceCard
+              experience={experience}
+              key={experience.startDate + experience.endDate}
+            />
+          ))}
+        </List>
+      )}
     </Flex>
   );
 };

@@ -37,13 +37,13 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
       >
         <Box
           w="full"
-          h="50%"
-          bgColor={isDarkMode ? "#161a1d" : "#f4eded"}
+          h="60%"
+          bgColor={isDarkMode ? "#161a1d" : "#ddd9d9"}
           opacity={1}
           position="relative"
           overflow="hidden"
           zIndex={1}
-          borderRadius={"2xl"}
+          borderTopRadius={"2xl"}
         >
           {project?.mediaType === "images" ? (
             <ImageCarousel images={project.images} />
@@ -92,14 +92,16 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             alignItems={"center"}
             gap="1.5rem"
           >
-            {project?.techStack.map((skill, index) => (
+            {project?.techStack.map((skill, i) => (
               <Text
                 borderRadius="md"
-                backgroundColor={isDarkMode ? "#212934" : "#e2e8f0"}
+                bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
                 py="0.25rem"
                 fontWeight={"semibold"}
-                key={index + skill}
+                className={open_sans.className}
+                key={i + skill}
+                _hover={{ cursor: "pointer" }}
               >
                 {skill}
               </Text>

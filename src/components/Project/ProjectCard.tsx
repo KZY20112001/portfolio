@@ -26,7 +26,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       _hover={{ cursor: "pointer" }}
-      backgroundColor={isDarkMode ? " #0d1012" : "#fffbfb"}
+      backgroundColor={isDarkMode ? " #4e4e4f" : "#edecec"}
       textColor={isDarkMode ? "white" : "black"}
       boxShadow={"xl"}
     >
@@ -38,7 +38,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
         w="full"
         h="full"
         bgColor={
-          isHovered ? (isDarkMode ? "#333333" : "#e0f7fa") : "transparent"
+          isHovered ? (isDarkMode ? "#333333" : "#dce7e9") : "transparent"
         }
         opacity={isHovered ? 0.5 : 1}
         zIndex={1}
@@ -51,7 +51,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
           top={0}
           bottom={0}
           margin="auto"
-          width="250"
+          width="400"
           height="250"
           alt="thumbnail"
           position={"absolute"}

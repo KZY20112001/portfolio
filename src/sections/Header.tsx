@@ -57,16 +57,14 @@ const Header = () => {
           href={`mailto:${EMAIL}`}
           className={`${
             isDarkMode ? "text-white" : "text-black"
-          } text-lg font-bold px-4 py-1 rounded-md hover:cursor-pointer ${
-            raleway.variable
-          } hover:bg-slate-200  dark:hover:bg-slate-600`}
+          } text-lg font-bold px-4 py-1 rounded-md hover:cursor-pointer font-raleway hover:bg-slate-200  dark:hover:bg-slate-600`}
         >
           contact me
         </a>
       </Flex>
       <MdDarkMode
         onClick={switchTheme}
-        className="dark:invert cursor-pointer absolute right-0 top-7"
+        className="dark:invert cursor-pointer absolute right-24 top-7"
       />
     </Flex>
   );

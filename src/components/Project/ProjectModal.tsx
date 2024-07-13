@@ -42,7 +42,6 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           opacity={1}
           position="relative"
           overflow="hidden"
-          zIndex={1}
           borderTopRadius={"2xl"}
         >
           {project?.mediaType === "images" ? (
@@ -66,7 +65,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           )}
         </Box>
         <ModalHeader
-          zIndex={10}
+          mt="0.5rem"
           textColor={isDarkMode ? "white" : "black"}
           display={"flex"}
           flexDir={"column"}
@@ -74,15 +73,20 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           fontWeight={"bold"}
           className={quicksand.className}
         >
-          {project?.name}
+          <a href={project?.website} target="_blank" rel="noreferrer">
+            {project?.name}
+          </a>
         </ModalHeader>
         <ModalBody w="full">
           <Text
             className={open_sans.className}
             textColor={isDarkMode ? "white" : "black"}
-            maxH={["12rem"]}
+            fontWeight={500}
+            fontSize="md"
+            lineHeight={"1.75rem"}
+            maxH="6rem"
             overflowY="scroll"
-            mb="2rem"
+            mb="2.5rem"
           >
             {project?.description}
           </Text>
@@ -91,6 +95,8 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             textColor={isDarkMode ? "white" : "black"}
             alignItems={"center"}
             gap="1.5rem"
+            maxW="100%"
+            flexWrap={"wrap"}
           >
             {project?.techStack.map((skill, i) => (
               <Text

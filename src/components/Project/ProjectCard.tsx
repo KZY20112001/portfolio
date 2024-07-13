@@ -1,5 +1,12 @@
 import { ThemeContext } from "@/context/ThemeContext";
-import { Box, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Text,
+} from "@chakra-ui/react";
 import React, { FC, useContext, useState } from "react";
 import { Image } from "@/components";
 import { quicksand, raleway } from "@/app/fonts";
@@ -26,7 +33,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       _hover={{ cursor: "pointer" }}
-      backgroundColor={isDarkMode ? " #4e4e4f" : "#edecec"}
+      backgroundColor={isDarkMode ? " #1c1c27" : "#edecec"}
       textColor={isDarkMode ? "white" : "black"}
       boxShadow={"xl"}
     >
@@ -56,6 +63,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
           alt="thumbnail"
           position={"absolute"}
           bgBlendMode={"multiply"}
+          placeholder="blur"
         />
       </Box>
       {isHovered && (
@@ -69,13 +77,17 @@ const ProjectCard: FC<ProjectCardInterface> = ({
             {name}
           </CardHeader>
           <CardBody></CardBody>
-          <CardFooter
-            fontSize="xl"
-            fontWeight={"bold"}
-            className={raleway.className}
-            zIndex={2}
-          >
-            {organizationShortName}
+          <CardFooter zIndex={2}>
+            <Text
+              display="flex"
+              mr="0"
+              ml="auto"
+              fontSize="xl"
+              fontWeight={"bold"}
+              className={raleway.className}
+            >
+              {organizationShortName}
+            </Text>
           </CardFooter>
         </>
       )}

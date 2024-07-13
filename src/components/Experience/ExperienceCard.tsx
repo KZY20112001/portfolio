@@ -14,7 +14,6 @@ import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions/experience";
 import { Image } from "@/components";
-import exp from "constants";
 
 interface ExperienceProps {
   experience: Experience;
@@ -31,9 +30,15 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
       flexGrow={1}
     >
       {isOpen ? (
-        <TiArrowSortedUp className="mt-1.5 dark:invert" onClick={onToggle} />
+        <TiArrowSortedUp
+          className="mt-1.5 dark:invert cursor-pointer"
+          onClick={onToggle}
+        />
       ) : (
-        <TiArrowSortedDown className="mt-1.5 dark:invert" onClick={onToggle} />
+        <TiArrowSortedDown
+          className="mt-1.5 dark:invert cursor-pointer"
+          onClick={onToggle}
+        />
       )}
       <Flex w="full" flexDir={"column"}>
         <Flex w="full" h={"4rem"}>
@@ -49,11 +54,21 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
           </Text>
           <Flex maxW="30%" mr="0" ml="auto" gap="1rem">
             <Flex flexDir={"column"} className={quicksand.className}>
-              <a
-                href={experience.companyWebsite}
-                target="_blank"
-                rel="noreferrer"
-              >
+              {experience.companyWebsite ? (
+                <a
+                  href={experience.companyWebsite}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <TextTransition
+                    springConfig={presets.stiff}
+                    inline
+                    className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
+                  >
+                    {isOpen ? experience.company : experience.companyShortName}
+                  </TextTransition>
+                </a>
+              ) : (
                 <TextTransition
                   springConfig={presets.stiff}
                   inline
@@ -61,7 +76,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 >
                   {isOpen ? experience.company : experience.companyShortName}
                 </TextTransition>
-              </a>
+              )}
 
               <TextTransition
                 springConfig={presets.stiff}
@@ -83,6 +98,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                   height={5}
                   width={5}
                   mt="0.25rem"
+                  placeholder="blur"
                   className={`${
                     experience.companyShortName === "NBS" ? "" : "dark:invert"
                   }`}
@@ -95,6 +111,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 height={5}
                 width={5}
                 mt="0.25rem"
+                placeholder="blur"
                 className={`${
                   experience.companyShortName === "NBS" ? "" : "dark:invert"
                 }`}
@@ -108,7 +125,8 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             className={open_sans.className}
             textColor={isDarkMode ? "white" : "black"}
             overflowY="scroll"
-            fontSize={"md"}
+            lineHeight={"1.75rem"}
+            fontSize={"lg"}
             fontWeight={550}
             maxH={["10rem"]}
             maxW={["90%"]}

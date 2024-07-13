@@ -29,11 +29,10 @@ const Projects = () => {
       gap="4rem"
       position="relative"
     >
-      <ProjectModal isOpen={isOpen} onClose={onClose} project={curProject!} />
+      <ProjectModal isOpen={isOpen} onClose={onClose} project={curProject} />
       <Text
         fontWeight="bold"
         fontSize="4xl"
-        _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >

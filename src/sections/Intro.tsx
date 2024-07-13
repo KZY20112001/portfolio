@@ -23,7 +23,6 @@ const Intro = () => {
         w="5xl"
         mb="4.5rem"
         className={raleway.className}
-        _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
       >
         Hello, I am Christopher, an aspiring Software Engineer based in

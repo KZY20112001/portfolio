@@ -72,6 +72,7 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
             height="350"
             alt="thumbnail"
             cursor={"pointer"}
+            placeholder="blur"
           />
         </motion.div>
       </AnimatePresence>

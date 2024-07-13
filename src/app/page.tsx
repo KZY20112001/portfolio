@@ -1,5 +1,11 @@
 "use client";
-import { Header, Intro, Experiences, Projects } from "@/sections";
+import {
+  Header,
+  Intro,
+  Experiences,
+  Projects,
+  TechnicalSkills,
+} from "@/sections";
 import { Box } from "@chakra-ui/react";
 
 const Home = () => {
@@ -10,6 +16,7 @@ const Home = () => {
         <Intro />
         <Experiences />
         <Projects />
+        <TechnicalSkills />
       </Box>
     </main>
   );

@@ -30,7 +30,6 @@ const Experiences = () => {
       <Text
         fontWeight="bold"
         fontSize="4xl"
-        _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >

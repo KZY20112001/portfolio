@@ -54,7 +54,7 @@ const mapProjectDataToProject = (projectData: ProjectData): Project => {
 export const fetchProjects = async () => {
   const query = `
     query GetAllProjects {
-        allProjects {
+        allProjects(orderBy: priority_ASC){
             name
             organization
             organizationShortName

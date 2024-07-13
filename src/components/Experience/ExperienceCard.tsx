@@ -4,7 +4,6 @@ import {
   Collapse,
   useDisclosure,
   Text,
-  textDecoration,
 } from "@chakra-ui/react";
 import TextTransition, { presets } from "react-text-transition";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
@@ -14,6 +13,7 @@ import React, { FC, useContext } from "react";
 import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions/experience";
+import { Image } from "@/components";
 
 interface ExperienceProps {
   experience: Experience;
@@ -30,43 +30,93 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
       flexGrow={1}
     >
       {isOpen ? (
-        <TiArrowSortedUp className="mt-1.5 dark:invert" onClick={onToggle} />
+        <TiArrowSortedUp
+          className="mt-1.5 dark:invert cursor-pointer"
+          onClick={onToggle}
+        />
       ) : (
-        <TiArrowSortedDown className="mt-1.5 dark:invert" onClick={onToggle} />
+        <TiArrowSortedDown
+          className="mt-1.5 dark:invert cursor-pointer"
+          onClick={onToggle}
+        />
       )}
       <Flex w="full" flexDir={"column"}>
-        <Flex justifyContent={"space-between"} w="full" h={"4rem"}>
+        <Flex w="full" h={"4rem"}>
           <Text
+            ml="0"
+            mr="auto"
             fontSize="xl"
             fontWeight={"bold"}
             textColor={isDarkMode ? "white" : "black"}
             className={quicksand.className}
           >
-            {experience.position}
+            {experience.title}
           </Text>
+          <Flex maxW="30%" mr="0" ml="auto" gap="1rem">
+            <Flex flexDir={"column"} className={quicksand.className}>
+              {experience.companyWebsite ? (
+                <a
+                  href={experience.companyWebsite}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <TextTransition
+                    springConfig={presets.stiff}
+                    inline
+                    className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
+                  >
+                    {isOpen ? experience.company : experience.companyShortName}
+                  </TextTransition>
+                </a>
+              ) : (
+                <TextTransition
+                  springConfig={presets.stiff}
+                  inline
+                  className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
+                >
+                  {isOpen ? experience.company : experience.companyShortName}
+                </TextTransition>
+              )}
 
-          <Flex flexDir={"column"} className={quicksand.className} maxW="30%">
-            <a
-              href={experience.companyWebsite}
-              target="_blank"
-              rel="noreferrer"
-            >
               <TextTransition
                 springConfig={presets.stiff}
                 inline
-                className={`dark:invert font-bold text-black text-xl mr-0 ml-auto `}
+                className={`dark:text-white text-md font-bold text-black mr-0 ml-auto`}
               >
-                {isOpen ? experience.company : experience.companyShortName}
+                {isOpen && `${experience.startDate} - ${experience.endDate}`}
               </TextTransition>
-            </a>
-
-            <TextTransition
-              springConfig={presets.stiff}
-              inline
-              className={`dark:invert text-md font-bold text-black mr-0 ml-auto`}
-            >
-              {isOpen && `${experience.startDate} - ${experience.endDate}`}
-            </TextTransition>
+            </Flex>
+            {experience.companyWebsite ? (
+              <a
+                href={experience.companyWebsite}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src={experience.companyLogo}
+                  alt="logo"
+                  height={5}
+                  width={5}
+                  mt="0.25rem"
+                  placeholder="blur"
+                  className={`${
+                    experience.companyShortName === "NBS" ? "" : "dark:invert"
+                  }`}
+                />
+              </a>
+            ) : (
+              <Image
+                src={experience.companyLogo}
+                alt="logo"
+                height={5}
+                width={5}
+                mt="0.25rem"
+                placeholder="blur"
+                className={`${
+                  experience.companyShortName === "NBS" ? "" : "dark:invert"
+                }`}
+              />
+            )}
           </Flex>
         </Flex>
 
@@ -75,7 +125,8 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             className={open_sans.className}
             textColor={isDarkMode ? "white" : "black"}
             overflowY="scroll"
-            fontSize={"md"}
+            lineHeight={"1.75rem"}
+            fontSize={"lg"}
             fontWeight={550}
             maxH={["10rem"]}
             maxW={["90%"]}
@@ -94,12 +145,13 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             {experience.techStack.map((skill, i) => (
               <Text
                 borderRadius="md"
-                backgroundColor={isDarkMode ? "#212934" : "#f3f1f1"}
+                bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
                 py="0.25rem"
                 fontWeight={"semibold"}
                 className={open_sans.className}
                 key={i + skill}
+                _hover={{ cursor: "pointer" }}
               >
                 {skill}
               </Text>

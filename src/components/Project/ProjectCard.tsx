@@ -1,7 +1,14 @@
 import { ThemeContext } from "@/context/ThemeContext";
-import { Box, Card, CardBody, CardFooter, CardHeader } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Text,
+} from "@chakra-ui/react";
 import React, { FC, useContext, useState } from "react";
-import Image from "@/components/CustomImage";
+import { Image } from "@/components";
 import { quicksand, raleway } from "@/app/fonts";
 
 interface ProjectCardInterface {
@@ -26,7 +33,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       _hover={{ cursor: "pointer" }}
-      backgroundColor={isDarkMode ? " #0d1012" : "#fffbfb"}
+      backgroundColor={isDarkMode ? " #1c1c27" : "#edecec"}
       textColor={isDarkMode ? "white" : "black"}
       boxShadow={"xl"}
     >
@@ -38,7 +45,7 @@ const ProjectCard: FC<ProjectCardInterface> = ({
         w="full"
         h="full"
         bgColor={
-          isHovered ? (isDarkMode ? "#333333" : "#e0f7fa") : "transparent"
+          isHovered ? (isDarkMode ? "#333333" : "#dce7e9") : "transparent"
         }
         opacity={isHovered ? 0.5 : 1}
         zIndex={1}
@@ -51,11 +58,12 @@ const ProjectCard: FC<ProjectCardInterface> = ({
           top={0}
           bottom={0}
           margin="auto"
-          width="250"
+          width="400"
           height="250"
           alt="thumbnail"
           position={"absolute"}
           bgBlendMode={"multiply"}
+          placeholder="blur"
         />
       </Box>
       {isHovered && (
@@ -69,13 +77,17 @@ const ProjectCard: FC<ProjectCardInterface> = ({
             {name}
           </CardHeader>
           <CardBody></CardBody>
-          <CardFooter
-            fontSize="xl"
-            fontWeight={"bold"}
-            className={raleway.className}
-            zIndex={2}
-          >
-            {organizationShortName}
+          <CardFooter zIndex={2}>
+            <Text
+              display="flex"
+              mr="0"
+              ml="auto"
+              fontSize="xl"
+              fontWeight={"bold"}
+              className={raleway.className}
+            >
+              {organizationShortName}
+            </Text>
           </CardFooter>
         </>
       )}

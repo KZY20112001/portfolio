@@ -1,12 +1,21 @@
 import { Flex, List, Text } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
 
 import { useContext } from "react";
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
-import { experiences } from "@/constants/experiences";
 import { ExperienceCard } from "@/components/Experience";
+import { fetchExperiences } from "@/utils/fetchExperiences";
+import { Experience } from "@/definitions/experience";
+import { Error, Loading } from "@/components";
+
 const Experiences = () => {
   const { isDarkMode } = useContext(ThemeContext);
+  const { data, error, isLoading } = useQuery<Experience[]>({
+    queryKey: ["experiences"],
+    queryFn: fetchExperiences,
+  });
+
   return (
     <Flex
       pt={["8rem"]}
@@ -21,21 +30,23 @@ const Experiences = () => {
       <Text
         fontWeight="bold"
         fontSize="4xl"
-        _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >
         Relevant Experiences
       </Text>
-
-      <List w="full" display="flex" flexDir={"column"} gap="2rem">
-        {experiences.map((experience) => (
-          <ExperienceCard
-            experience={experience}
-            key={experience.startDate + experience.endDate}
-          />
-        ))}
-      </List>
+      {isLoading && <Loading />}
+      {error && <Error error={error} />}
+      {data && (
+        <List w="full" display="flex" flexDir={"column"} gap="2rem">
+          {data.map((experience) => (
+            <ExperienceCard
+              experience={experience}
+              key={experience.startDate + experience.endDate}
+            />
+          ))}
+        </List>
+      )}
     </Flex>
   );
 };

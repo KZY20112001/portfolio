@@ -61,12 +61,11 @@ const Header = () => {
         >
           contact me
         </a>
-
-        <MdDarkMode
-          onClick={switchTheme}
-          className="dark:invert cursor-pointer absolute right-24 top-7"
-        />
       </Flex>
+      <MdDarkMode
+        onClick={switchTheme}
+        className="dark:invert cursor-pointer absolute right-24 top-7"
+      />
     </Flex>
   );
 };

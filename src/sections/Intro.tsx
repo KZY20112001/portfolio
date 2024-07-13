@@ -23,7 +23,6 @@ const Intro = () => {
         w="5xl"
         mb="4.5rem"
         className={raleway.className}
-        _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
       >
         Hello, I am Christopher, an aspiring Software Engineer based in
@@ -37,8 +36,8 @@ const Intro = () => {
         textColor={isDarkMode ? "white" : "black"}
         className={open_sans.className}
       >
-        I am passionate about developing software that can make a meaningful
-        impact on our society.
+        I am a final-year Computer Science undergraduate who is passionate about
+        developing software that can make a meaningful impact on our society.
       </Text>
       <Text
         fontSize={"xl"}

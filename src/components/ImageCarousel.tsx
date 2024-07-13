@@ -55,22 +55,24 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
             x: { type: "spring", stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
-          style={{ position: "absolute", width: "100%", height: "100%" }}
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
           <Image
             zIndex={10}
             src={images[currentIndex]!}
             objectFit={"contain"}
-            position="absolute"
-            left={0}
-            right={0}
-            top={0}
-            bottom={0}
-            margin="auto"
-            width="300"
-            height="300"
+            width="600"
+            height="350"
             alt="thumbnail"
             cursor={"pointer"}
+            placeholder="blur"
           />
         </motion.div>
       </AnimatePresence>

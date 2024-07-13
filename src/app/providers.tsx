@@ -1,5 +1,5 @@
 "use client";
-
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 
@@ -13,11 +13,14 @@ const breakpoints = {
 };
 
 const theme = extendTheme({ breakpoints });
+const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ChakraProvider theme={theme}>
-      <ThemeContextProvider>{children}</ThemeContextProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <ThemeContextProvider>{children}</ThemeContextProvider>
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }

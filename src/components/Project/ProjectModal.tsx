@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions/project";
-import ImageCarousel from "@/components/ImageCarousel";
+import { ImageCarousel } from "@/components";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -37,13 +37,12 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
       >
         <Box
           w="full"
-          h="50%"
-          bgColor={isDarkMode ? "#161a1d" : "#f4eded"}
+          h="60%"
+          bgColor={isDarkMode ? "#161a1d" : "#ddd9d9"}
           opacity={1}
           position="relative"
           overflow="hidden"
-          zIndex={1}
-          borderRadius={"2xl"}
+          borderTopRadius={"2xl"}
         >
           {project?.mediaType === "images" ? (
             <ImageCarousel images={project.images} />
@@ -66,7 +65,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           )}
         </Box>
         <ModalHeader
-          zIndex={10}
+          mt="0.5rem"
           textColor={isDarkMode ? "white" : "black"}
           display={"flex"}
           flexDir={"column"}
@@ -74,15 +73,20 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           fontWeight={"bold"}
           className={quicksand.className}
         >
-          {project?.name}
+          <a href={project?.website} target="_blank" rel="noreferrer">
+            {project?.name}
+          </a>
         </ModalHeader>
         <ModalBody w="full">
           <Text
             className={open_sans.className}
             textColor={isDarkMode ? "white" : "black"}
-            maxH={["12rem"]}
+            fontWeight={500}
+            fontSize="md"
+            lineHeight={"1.75rem"}
+            maxH="6rem"
             overflowY="scroll"
-            mb="2rem"
+            mb="2.5rem"
           >
             {project?.description}
           </Text>
@@ -91,15 +95,19 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             textColor={isDarkMode ? "white" : "black"}
             alignItems={"center"}
             gap="1.5rem"
+            maxW="100%"
+            flexWrap={"wrap"}
           >
-            {project?.techStack.map((skill, index) => (
+            {project?.techStack.map((skill, i) => (
               <Text
                 borderRadius="md"
-                backgroundColor={isDarkMode ? "#212934" : "#e2e8f0"}
+                bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
                 py="0.25rem"
                 fontWeight={"semibold"}
-                key={index + skill}
+                className={open_sans.className}
+                key={i + skill}
+                _hover={{ cursor: "pointer" }}
               >
                 {skill}
               </Text>

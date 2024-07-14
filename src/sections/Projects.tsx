@@ -5,7 +5,7 @@ import React, { useContext, useState } from "react";
 
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Project } from "@/definitions/project";
+import { Project } from "@/definitions";
 import { ProjectCard, ProjectModal } from "@/components/Project";
 import { fetchProjects } from "@/utils/fetchProjects";
 import { Error, Loading } from "@/components";

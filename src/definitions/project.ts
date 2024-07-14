@@ -1,4 +1,4 @@
-export type Project = {
+type Project = {
   name: string;
   organization?: string;
   organizationShortName?: string;
@@ -10,3 +10,5 @@ export type Project = {
 
 type ImagesProps = { mediaType: "images"; images: string[] };
 type VideoProps = { mediaType: "video"; video: string };
+
+export default Project;

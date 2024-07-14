@@ -2,12 +2,13 @@ import { Flex, List, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 
 import { useContext } from "react";
+
 import { raleway } from "@/app/fonts";
-import { ThemeContext } from "@/context/ThemeContext";
-import { ExperienceCard } from "@/components/Experience";
-import { fetchExperiences } from "@/utils/fetchExperiences";
-import { Experience } from "@/definitions/experience";
 import { Error, Loading } from "@/components";
+import { ExperienceCard } from "@/components/Experience";
+import { ThemeContext } from "@/context/ThemeContext";
+import { Experience } from "@/definitions";
+import { fetchExperiences } from "@/utils/fetchExperiences";
 
 const Experiences = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -15,7 +16,6 @@ const Experiences = () => {
     queryKey: ["experiences"],
     queryFn: fetchExperiences,
   });
-
   return (
     <Flex
       pt={["8rem"]}

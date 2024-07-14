@@ -18,7 +18,7 @@ const Intro = () => {
       flexDir={"column"}
     >
       <Text
-        fontWeight="bold"
+        fontWeight={"bold"}
         fontSize="4xl"
         w="5xl"
         mb="4.5rem"
@@ -55,7 +55,7 @@ const Intro = () => {
         href={`mailto:${EMAIL}`}
         className={`${
           isDarkMode ? "text-white" : "text-black"
-        } w-fit text-xl font-[600] hover:cursor-pointer hover:underline hover:italic font-raleway`}
+        } w-fit text-xl font-semibold hover:cursor-pointer hover:underline hover:italic font-raleway`}
       >
         {EMAIL}
       </a>

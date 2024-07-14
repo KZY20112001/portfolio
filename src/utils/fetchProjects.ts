@@ -1,5 +1,5 @@
 import { performRequest } from "@/lib/datocms";
-import { Project } from "@/definitions/project";
+import { Project } from "@/definitions";
 
 type TechStack = {
   name: string;
@@ -11,7 +11,7 @@ type Image = { url: string };
 
 type Thumbnail = { url: string };
 
-interface ProjectData {
+type ProjectData = {
   name: string;
   organization: string;
   organizationShortName: string;
@@ -21,7 +21,7 @@ interface ProjectData {
   video: Video | null;
   images: Image[] | null;
   techstack: TechStack[];
-}
+};
 
 interface GetAllProjectsResponse {
   allProjects: ProjectData[];
@@ -74,7 +74,7 @@ export const fetchProjects = async () => {
             }
         }
     }
-`;
+  `;
   const data = await performRequest<GetAllProjectsResponse>({ query });
   const projects: Project[] = data.allProjects.map((projectData) =>
     mapProjectDataToProject(projectData)

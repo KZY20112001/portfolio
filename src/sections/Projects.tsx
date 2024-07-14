@@ -1,7 +1,7 @@
 import { Flex, Grid, GridItem, Text, useDisclosure } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 
-import React, { useContext, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
@@ -10,7 +10,9 @@ import { ProjectCard, ProjectModal } from "@/components/Project";
 import { fetchProjects } from "@/utils/fetchProjects";
 import { Error, Loading } from "@/components";
 
-const Projects = () => {
+interface ProjectProps {}
+
+const Projects: FC<ProjectProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [curProject, setCurProject] = useState<Project | null>(null);

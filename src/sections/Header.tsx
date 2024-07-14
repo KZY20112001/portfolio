@@ -2,13 +2,15 @@ import { Flex, Text, Tooltip } from "@chakra-ui/react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 
-import { useContext } from "react";
+import { FC, useContext } from "react";
 
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/constants/contacts";
 
-const Header = () => {
+interface HeaderProps {}
+
+const Header: FC<HeaderProps> = () => {
   const { isDarkMode, switchTheme } = useContext(ThemeContext);
   return (
     <Flex

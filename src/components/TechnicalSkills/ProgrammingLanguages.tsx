@@ -36,10 +36,10 @@ const ProgrammingLanguages: FC<ProgrammingLangaugesProps> = ({
           >
             <Box
               _hover={{
-                backgroundColor: isDarkMode ? "#475569" : "#e2e8f0",
+                backgroundColor: isDarkMode ? "#475569" : "#e1e8f0",
               }}
               p="1rem"
-              rounded={"3xl"}
+              rounded={"full"}
             >
               <Image
                 src={language.logo}

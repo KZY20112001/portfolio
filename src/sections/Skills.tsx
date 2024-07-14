@@ -20,7 +20,6 @@ const Skills = () => {
     queryKey: ["technicalSkills"],
     queryFn: fetchTechnicalSkills,
   });
-  console.log(data);
   return (
     <Flex
       pt={["8rem"]}

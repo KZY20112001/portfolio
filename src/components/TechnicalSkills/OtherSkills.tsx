@@ -30,10 +30,10 @@ const OtherSkills: FC<OtherSkillsProps> = ({ otherSkills }) => {
           <Tooltip label={skill.name} rounded={"lg"} key={skill.logo + index}>
             <Box
               _hover={{
-                backgroundColor: isDarkMode ? "#475569" : "#e2e8f0",
+                backgroundColor: isDarkMode ? "#475569" : "#e1e8f0",
               }}
               p="1rem"
-              rounded={"3xl"}
+              rounded={"full"}
             >
               <Image
                 src={skill.logo}

@@ -1,7 +1,7 @@
 import { Flex, List, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 
-import { useContext } from "react";
+import { FC, useContext } from "react";
 
 import { raleway } from "@/app/fonts";
 import { Error, Loading } from "@/components";
@@ -10,7 +10,9 @@ import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { fetchExperiences } from "@/utils/fetchExperiences";
 
-const Experiences = () => {
+interface ExperiencesProps {}
+
+const Experiences: FC<ExperiencesProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const { data, error, isLoading } = useQuery<Experience[]>({
     queryKey: ["experiences"],

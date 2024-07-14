@@ -1,12 +1,14 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-import { useContext } from "react";
+import { FC, useContext } from "react";
 
 import { open_sans, raleway } from "@/app/fonts";
 import { EMAIL } from "@/constants/contacts";
 import { ThemeContext } from "@/context/ThemeContext";
 
-const Intro = () => {
+interface IntroProps {}
+
+const Intro: FC<IntroProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
     <Flex

@@ -1,4 +1,4 @@
-import { Experience } from "@/definitions/experience";
+import { Experience } from "@/definitions";
 import { performRequest } from "@/lib/datocms";
 
 type TechStack = {
@@ -9,7 +9,7 @@ type CompanyLogo = {
   url: string;
 };
 
-interface ExperienceData {
+type ExperienceData = {
   title: string;
   company: string;
   companyShortName: string;
@@ -19,7 +19,7 @@ interface ExperienceData {
   companyWebsite?: string;
   companyLogo: CompanyLogo;
   techstack: TechStack[];
-}
+};
 
 interface GetAllExperiencesResponse {
   allExperiences: ExperienceData[];
@@ -65,7 +65,7 @@ export const fetchExperiences = async () => {
             }
         }
     }
-`;
+  `;
   const data = await performRequest<GetAllExperiencesResponse>({ query });
   const experiences: Experience[] = data.allExperiences.map((item) => ({
     title: item.title,

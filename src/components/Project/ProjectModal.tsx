@@ -15,7 +15,7 @@ import ReactPlayer from "react-player";
 import { FC, useContext } from "react";
 
 import { ThemeContext } from "@/context/ThemeContext";
-import { Project } from "@/definitions/project";
+import { Project } from "@/definitions";
 import { ImageCarousel } from "@/components";
 
 interface ProjectModalProps {

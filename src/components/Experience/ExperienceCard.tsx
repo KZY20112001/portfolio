@@ -12,7 +12,7 @@ import React, { FC, useContext } from "react";
 
 import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
-import { Experience } from "@/definitions/experience";
+import { Experience } from "@/definitions";
 import { Image } from "@/components";
 
 interface ExperienceProps {

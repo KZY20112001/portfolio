@@ -48,7 +48,6 @@ const Projects: FC<ProjectProps> = () => {
           py={[0, "2rem"]}
           templateColumns={["repeat(1,1fr)", "repeat(2, 1fr)"]}
           gap={[0, "5rem"]}
-          w={["full"]}
         >
           {data.map((project) => (
             <GridItem

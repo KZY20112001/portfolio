@@ -5,6 +5,7 @@ import { FC, useContext } from "react";
 import { open_sans, raleway } from "@/app/fonts";
 import { EMAIL } from "@/constants/contacts";
 import { ThemeContext } from "@/context/ThemeContext";
+import Link from "next/link";
 
 interface IntroProps {}
 
@@ -53,14 +54,14 @@ const Intro: FC<IntroProps> = () => {
         backend development.
       </Text>
 
-      <a
+      <Link
         href={`mailto:${EMAIL}`}
         className={`${
           isDarkMode ? "text-white" : "text-black"
         } w-fit text-xl font-semibold hover:cursor-pointer hover:underline hover:italic font-raleway`}
       >
         {EMAIL}
-      </a>
+      </Link>
     </Flex>
   );
 };

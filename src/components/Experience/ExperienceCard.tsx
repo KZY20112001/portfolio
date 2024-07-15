@@ -14,6 +14,7 @@ import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { Image } from "@/components";
+import Link from "next/link";
 
 interface ExperienceProps {
   experience: Experience;
@@ -55,7 +56,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
           <Flex maxW="30%" mr="0" ml="auto" gap="1rem">
             <Flex flexDir={"column"} className={quicksand.className}>
               {experience.companyWebsite ? (
-                <a
+                <Link
                   href={experience.companyWebsite}
                   target="_blank"
                   rel="noreferrer"
@@ -67,7 +68,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                   >
                     {isOpen ? experience.company : experience.companyShortName}
                   </TextTransition>
-                </a>
+                </Link>
               ) : (
                 <TextTransition
                   springConfig={presets.stiff}
@@ -87,7 +88,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               </TextTransition>
             </Flex>
             {experience.companyWebsite ? (
-              <a
+              <Link
                 href={experience.companyWebsite}
                 target="_blank"
                 rel="noreferrer"
@@ -103,7 +104,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                     experience.companyShortName === "NBS" ? "" : "dark:invert"
                   }`}
                 />
-              </a>
+              </Link>
             ) : (
               <Image
                 src={experience.companyLogo}

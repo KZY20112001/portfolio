@@ -17,6 +17,7 @@ import { FC, useContext } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions";
 import { ImageCarousel } from "@/components";
+import Link from "next/link";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -73,9 +74,13 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           fontWeight={"bold"}
           className={quicksand.className}
         >
-          <a href={project?.website} target="_blank" rel="noreferrer">
-            {project?.name}
-          </a>
+          {project?.website ? (
+            <Link href={project?.website} target="_blank" rel="noreferrer">
+              {project?.name}
+            </Link>
+          ) : (
+            <Text>{project?.name}</Text>
+          )}
         </ModalHeader>
         <ModalBody w="full">
           <Text

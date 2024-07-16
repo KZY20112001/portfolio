@@ -67,7 +67,7 @@ const Header: FC<HeaderProps> = () => {
       </Drawer>
       <MdDarkMode
         onClick={switchTheme}
-        className="dark:invert cursor-pointer absolute right-20 top-6 md:right-24 md:top-7"
+        className="dark:invert cursor-pointer absolute right-16 top-6 md:right-24 md:top-7"
       />
 
       <IoReorderThree

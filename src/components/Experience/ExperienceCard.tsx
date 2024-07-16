@@ -60,13 +60,15 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             >
               {experience.title}
             </Text>
-            {!isDesktop && isOpen && (
+            {!isDesktop && (
               <TextTransition
                 springConfig={presets.default}
                 inline
                 className={`dark:text-white text-base text-black ml-0 mr-auto`}
               >
-                {experience.startDate} - {experience.endDate}
+                {isOpen
+                  ? `${experience.startDate} - ${experience.endDate}`
+                  : ""}
               </TextTransition>
             )}
           </Flex>
@@ -86,7 +88,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                   <TextTransition
                     springConfig={presets.stiff}
                     inline
-                    className={`dark:text-white bg-yellow-40 text-black text-lg md:text-xl mr-0 ml-auto`}
+                    className={`dark:text-white text-black text-lg md:text-xl mr-0 ml-auto`}
                   >
                     {isOpen && isDesktop
                       ? experience.company
@@ -105,13 +107,15 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 </TextTransition>
               )}
 
-              {isDesktop && isOpen && (
+              {isDesktop && (
                 <TextTransition
                   springConfig={presets.stiff}
                   inline
                   className={`dark:text-white text-base text-black mr-0 ml-auto`}
                 >
-                  {experience.startDate} - {experience.endDate}
+                  {isOpen
+                    ? `${experience.startDate} - ${experience.endDate}`
+                    : ""}
                 </TextTransition>
               )}
             </Flex>

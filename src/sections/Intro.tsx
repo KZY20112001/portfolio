@@ -13,18 +13,19 @@ const Intro: FC<IntroProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
     <Flex
-      h={"100vh"}
-      w="full"
+      minH={"100vh"}
       justifyContent={"center"}
       zIndex={1}
       scrollSnapAlign={"center"}
       flexDir={"column"}
+      fontWeight={"semibold"}
     >
       <Text
+        mt={["2rem", null, null, 0]}
         fontWeight={"bold"}
-        fontSize="4xl"
-        w="5xl"
-        mb="4.5rem"
+        fontSize={["3xl", "4xl"]}
+        w={["full", null, null, "5xl"]}
+        mb={"3rem"}
         className={raleway.className}
         textColor={isDarkMode ? "white" : "black"}
       >
@@ -33,32 +34,31 @@ const Intro: FC<IntroProps> = () => {
       </Text>
 
       <Text
-        fontSize={"xl"}
-        w="3xl"
-        mb="2.5rem"
+        fontSize={["md", "xl"]}
+        w={["full", null, null, "3xl"]}
+        mb={"3rem"}
         textColor={isDarkMode ? "white" : "black"}
         className={open_sans.className}
       >
-        I am a final-year Computer Science undergraduate who is passionate about
-        developing software that can make a meaningful impact on our society.
+        I am a Computer Science undergraduate who is interested in building
+        software that can have a meaningful impact on our society.
       </Text>
       <Text
-        fontSize={"xl"}
-        w="3xl"
-        mb="4rem"
+        fontSize={["md", "xl"]}
+        w={["full", null, null, "3xl"]}
+        mb={"4rem"}
         textColor={isDarkMode ? "white" : "black"}
         className={open_sans.className}
       >
-        Throughout my academic projects and internships, I have been involved in
-        various aspects of software development and am currently focused on
-        backend development.
+        I have been involved in various aspects of software development and am
+        currently focused on backend development.
       </Text>
 
       <Link
         href={`mailto:${EMAIL}`}
         className={`${
           isDarkMode ? "text-white" : "text-black"
-        } w-fit text-xl font-semibold hover:cursor-pointer hover:underline hover:italic font-raleway`}
+        } text-base md:text-xl  font-semibold hover:font-bold hover:cursor-pointer hover:underline hover:italic font-raleway`}
       >
         {EMAIL}
       </Link>

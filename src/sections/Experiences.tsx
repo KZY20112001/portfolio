@@ -20,18 +20,18 @@ const Experiences: FC<ExperiencesProps> = () => {
   });
   return (
     <Flex
-      pt={["8rem"]}
+      pt={["6rem", "8rem"]}
       pb={["4rem"]}
-      minH={["", "100vh"]}
+      minH={["100vh"]}
       width="full"
       scrollSnapAlign={"start"}
       flexDir={"column"}
-      gap="4rem"
+      gap={["3rem", "4rem"]}
       position="relative"
     >
       <Text
         fontWeight="bold"
-        fontSize="4xl"
+        fontSize={["3xl", "4xl"]}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >

@@ -1,4 +1,5 @@
 import {
+  Box,
   Drawer,
   DrawerContent,
   DrawerOverlay,
@@ -17,14 +18,12 @@ import { FC, useContext } from "react";
 import { raleway } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/constants/contacts";
-import useDesktop from "@/hooks/useDesktop";
 import Link from "next/link";
 
 interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => {
   const { isDarkMode, switchTheme } = useContext(ThemeContext);
-  const isDesktop = useDesktop();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -32,7 +31,7 @@ const Header: FC<HeaderProps> = () => {
       position={"fixed"}
       width="full"
       zIndex={50}
-      px={["1rem", "10rem"]}
+      px={["1rem", null, "5rem", "10rem"]}
       py={"1rem"}
       borderBottom="1px"
       borderColor={isDarkMode ? "white" : "black"}
@@ -48,9 +47,11 @@ const Header: FC<HeaderProps> = () => {
       >
         christopher khant zayar
       </Text>
-      {isDesktop && <Contacts />}
+      <Box display={["none", null, null, "block"]}>
+        <Contacts />
+      </Box>
       <Drawer
-        isOpen={!isDesktop && isOpen}
+        isOpen={isOpen}
         autoFocus={false}
         placement="right"
         onClose={onClose}
@@ -67,13 +68,13 @@ const Header: FC<HeaderProps> = () => {
       </Drawer>
       <MdDarkMode
         onClick={switchTheme}
-        className="dark:invert cursor-pointer absolute right-16 top-6 md:right-24 md:top-7"
+        className="dark:invert cursor-pointer absolute right-16 top-6 lg:right-24 lg:top-7"
       />
 
       <IoReorderThree
         size={40}
         onClick={onOpen}
-        className="dark:invert absolute right-2 left-auto top-3 md:hidden"
+        className="dark:invert absolute right-2 left-auto top-3 lg:hidden"
       />
     </Flex>
   );
@@ -83,20 +84,20 @@ const Contacts = () => {
   return (
     <Flex
       gap={["1rem", "2rem"]}
-      flexDirection={["column", "row"]}
-      alignItems={["normal", "center"]}
-      py={["1rem", 0]}
+      flexDirection={["column", null, null, "row"]}
+      alignItems={["normal", null, null, "center"]}
+      py={["1rem", null, null, 0]}
     >
       <Tooltip label="linkedin">
         <Link
           href={LINKEDIN_URL}
           target="_blank"
           rel="noreferrer"
-          className="text-black dark:text-white cursor-pointer rounded-md md:h-8 md:w-20 gap-4 px-4 py-1.5 md:px-0 md:py-0 flex items-center md:justify-center hover:bg-slate-200  dark:hover:bg-slate-600"
+          className="text-black dark:text-white cursor-pointer rounded-md lg:h-8 lg:w-20 gap-4 px-4 py-1.5 lg:px-0 lg:py-0 flex items-center lg:justify-center hover:bg-slate-200  dark:hover:bg-slate-600"
         >
           <FaLinkedinIn />
           <Text
-            display={["block", "none"]}
+            display={["block", null, null, "none"]}
             className={raleway.className}
             fontWeight={"bold"}
             fontSize="lg"
@@ -110,11 +111,11 @@ const Contacts = () => {
           href={GITHUB_URL}
           target="_blank"
           rel="noreferrer"
-          className="text-black dark:text-white cursor-pointer rounded-md md:h-8 md:w-20  gap-4 px-4 py-1.5 md:px-0 md:py-0 flex items-center md:justify-center hover:bg-slate-200  dark:hover:bg-slate-600"
+          className="text-black dark:text-white cursor-pointer rounded-md lg:h-8 lg:w-20  gap-4 px-4 py-1.5 lg:px-0 lg:py-0 flex items-center lg:justify-center hover:bg-slate-200  dark:hover:bg-slate-600"
         >
           <FaGithub />
           <Text
-            display={["block", "none"]}
+            display={["block", null, null, "none"]}
             className={raleway.className}
             fontWeight={"bold"}
             fontSize="lg"

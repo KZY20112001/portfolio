@@ -22,8 +22,7 @@ const Skills = () => {
   });
   return (
     <Flex
-      pt={["8rem"]}
-      pb={["8rem"]}
+      py={["8rem"]}
       minH={["", "100vh"]}
       width="full"
       scrollSnapAlign={"center"}

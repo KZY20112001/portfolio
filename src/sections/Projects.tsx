@@ -22,8 +22,7 @@ const Projects: FC<ProjectProps> = () => {
   });
   return (
     <Flex
-      pt={["8rem"]}
-      pb={["4rem"]}
+      py={["8rem"]}
       minH={["", "100vh"]}
       width="full"
       scrollSnapAlign={"center"}
@@ -38,7 +37,7 @@ const Projects: FC<ProjectProps> = () => {
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >
-        Some Projects I did
+        Some Projects I have done
       </Text>
       {isLoading && <Loading />}
       {error && <Error error={error} />}

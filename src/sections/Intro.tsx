@@ -58,7 +58,7 @@ const Intro: FC<IntroProps> = () => {
         href={`mailto:${EMAIL}`}
         className={`${
           isDarkMode ? "text-white" : "text-black"
-        } text-base md:text-xl  font-semibold hover:font-bold hover:cursor-pointer hover:underline hover:italic font-raleway`}
+        } text-base md:text-xl  font-bold hover:cursor-pointer hover:underline hover:italic font-raleway`}
       >
         {EMAIL}
       </Link>

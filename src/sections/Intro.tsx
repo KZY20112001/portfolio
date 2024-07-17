@@ -40,7 +40,7 @@ const Intro: FC<IntroProps> = () => {
         textColor={isDarkMode ? "white" : "black"}
         className={open_sans.className}
       >
-        I am a Computer Science undergraduate who is interested in building
+        I am a Computer Science undergraduate who is passionate about building
         software that can have a meaningful impact on our society.
       </Text>
       <Text

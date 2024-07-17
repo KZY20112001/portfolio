@@ -1,14 +1,12 @@
 // useIsDesktop.ts
 import { useState, useEffect } from "react";
 
-const useDesktop = (): boolean => {
-  const [isDesktop, setIsDesktop] = useState<boolean>(false);
-
-  const thresholdWidth = 992;
+const useMediaQuery = (width: number): boolean => {
+  const [match, setMatch] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > thresholdWidth);
+      setMatch(window.innerWidth > width);
     };
 
     window.addEventListener("resize", handleResize);
@@ -16,9 +14,9 @@ const useDesktop = (): boolean => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [width]);
 
-  return isDesktop;
+  return match;
 };
 
-export default useDesktop;
+export default useMediaQuery;

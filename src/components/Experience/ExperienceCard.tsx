@@ -15,7 +15,7 @@ import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { Image } from "@/components";
 import Link from "next/link";
-import useDesktop from "@/hooks/useDesktop";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface ExperienceProps {
   experience: Experience;
@@ -23,7 +23,7 @@ interface ExperienceProps {
 const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
   const { isDarkMode } = useContext(ThemeContext);
   const { isOpen, onToggle } = useDisclosure();
-  const isDesktop = useDesktop();
+  const isDesktop = useMediaQuery(992);
   return (
     <ListItem
       gap="1rem"

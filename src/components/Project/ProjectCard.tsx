@@ -10,6 +10,7 @@ import {
 import React, { FC, useContext, useState } from "react";
 import { Image } from "@/components";
 import { quicksand, raleway } from "@/app/fonts";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface ProjectCardInterface {
   name: string;
@@ -24,6 +25,8 @@ const ProjectCard: FC<ProjectCardInterface> = ({
 }) => {
   const { isDarkMode } = useContext(ThemeContext);
   const [isHovered, setIsHovered] = useState(false);
+  const isDesktop = useMediaQuery(992);
+  const isTablet = useMediaQuery(750);
   return (
     <Card
       position={"relative"}
@@ -58,18 +61,18 @@ const ProjectCard: FC<ProjectCardInterface> = ({
           top={0}
           bottom={0}
           margin="auto"
-          width="400"
-          height="250"
+          width={isTablet ? 400 : 270}
+          height={isTablet ? 250 : 170}
           alt="thumbnail"
           position={"absolute"}
           bgBlendMode={"multiply"}
           placeholder="blur"
         />
       </Box>
-      {isHovered && (
+      {(isHovered || !isDesktop) && (
         <>
           <CardHeader
-            fontSize="3xl"
+            fontSize={["2xl", null, null, "3xl"]}
             fontWeight={"bold"}
             className={quicksand.className}
             zIndex={2}

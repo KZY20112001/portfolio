@@ -9,15 +9,19 @@ import {
   Text,
   ModalFooter,
   Flex,
+  ModalCloseButton,
 } from "@chakra-ui/react";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+
 import ReactPlayer from "react-player";
 
 import { FC, useContext } from "react";
+import Link from "next/link";
 
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions";
 import { ImageCarousel } from "@/components";
-import Link from "next/link";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -27,18 +31,25 @@ interface ProjectModalProps {
 
 const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
   const { isDarkMode } = useContext(ThemeContext);
-
+  const isTablet = useMediaQuery(750);
+  const isDesktop = useMediaQuery(992);
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={"4xl"} isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size={["xs", null, "xl", "4xl"]}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
-        height={["3xl"]}
+        height={["2xl", "3xl"]}
         bgColor={isDarkMode ? "#0d1012" : "white"}
         borderRadius={"2xl"}
       >
+        {!isDesktop && <ModalCloseButton className="z-50 mt-2 dark:invert" />}
         <Box
           w="full"
-          h="60%"
+          h={["40%", "60%"]}
           bgColor={isDarkMode ? "#161a1d" : "#ddd9d9"}
           opacity={1}
           position="relative"
@@ -56,8 +67,8 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             >
               <ReactPlayer
                 url={project?.video}
-                width={"500px"}
-                height={"300px"}
+                width={isDesktop ? 600 : isTablet ? 450 : 250}
+                height={isDesktop ? 350 : isTablet ? 275 : 200}
                 light
                 controls
                 loop
@@ -70,13 +81,19 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           textColor={isDarkMode ? "white" : "black"}
           display={"flex"}
           flexDir={"column"}
-          fontSize="3xl"
+          fontSize={["xl", "3xl"]}
           fontWeight={"bold"}
           className={quicksand.className}
         >
           {project?.website ? (
-            <Link href={project?.website} target="_blank" rel="noreferrer">
-              {project?.name}
+            <Link
+              href={project?.website}
+              className="cursor-pointer flex gap-3"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {project?.name}{" "}
+              <FaExternalLinkSquareAlt className="mt-1.5 md:mt-4" size={15} />
             </Link>
           ) : (
             <Text>{project?.name}</Text>
@@ -89,9 +106,9 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             fontWeight={500}
             fontSize="md"
             lineHeight={"1.75rem"}
-            maxH="6rem"
+            maxH={["9rem", null, null, "6rem"]}
             overflowY="scroll"
-            mb="2.5rem"
+            mb={["1.5rem", "2.5rem"]}
           >
             {project?.description}
           </Text>
@@ -99,7 +116,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           <Flex
             textColor={isDarkMode ? "white" : "black"}
             alignItems={"center"}
-            gap="1.5rem"
+            gap={["1rem", null, null, "1.5rem"]}
             maxW="100%"
             flexWrap={"wrap"}
           >
@@ -107,9 +124,10 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
               <Text
                 borderRadius="md"
                 bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
-                px="1rem"
-                py="0.25rem"
+                px={["1rem"]}
+                py={["0.25rem"]}
                 fontWeight={"semibold"}
+                fontSize={["sm", "md"]}
                 className={open_sans.className}
                 key={i + skill}
                 _hover={{ cursor: "pointer" }}
@@ -120,7 +138,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           </Flex>
         </ModalBody>
         <ModalFooter
-          fontSize="xl"
+          fontSize={["lg", "xl"]}
           fontWeight={"bold"}
           textColor={isDarkMode ? "white" : "black"}
           className={raleway.className}

@@ -1,7 +1,7 @@
 import { Flex, List, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 
-import { useContext } from "react";
+import { FC, useContext } from "react";
 
 import { raleway } from "@/app/fonts";
 import { Error, Loading } from "@/components";
@@ -10,7 +10,9 @@ import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { fetchExperiences } from "@/utils/fetchExperiences";
 
-const Experiences = () => {
+interface ExperiencesProps {}
+
+const Experiences: FC<ExperiencesProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const { data, error, isLoading } = useQuery<Experience[]>({
     queryKey: ["experiences"],
@@ -18,18 +20,18 @@ const Experiences = () => {
   });
   return (
     <Flex
-      pt={["8rem"]}
+      pt={["6rem", "8rem"]}
       pb={["4rem"]}
-      minH={["", "100vh"]}
+      minH={["100vh"]}
       width="full"
       scrollSnapAlign={"start"}
       flexDir={"column"}
-      gap="4rem"
+      gap={["3rem", "4rem"]}
       position="relative"
     >
       <Text
         fontWeight="bold"
-        fontSize="4xl"
+        fontSize={["3xl", "4xl"]}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
       >

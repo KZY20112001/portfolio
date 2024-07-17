@@ -12,20 +12,14 @@ interface ErrorProps {
 const Error: FC<ErrorProps> = ({ error }) => {
   const { isDarkMode } = useContext(ThemeContext);
   return (
-    <Flex
-      justifyContent={"center"}
-      alignItems={"center"}
-      h="xl"
-      w="full"
-      gap="1rem"
-    >
+    <Flex justifyContent={"center"} alignItems={"center"} gap="1rem">
       <MdErrorOutline className="dark:invert" />
       <Text
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}
         fontWeight={"bold"}
       >
-        An error occurred: {error.message}
+        An error occurred:
       </Text>
     </Flex>
   );

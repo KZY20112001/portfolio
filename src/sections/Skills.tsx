@@ -20,21 +20,19 @@ const Skills = () => {
     queryKey: ["technicalSkills"],
     queryFn: fetchTechnicalSkills,
   });
-  console.log(data);
   return (
     <Flex
-      pt={["8rem"]}
-      pb={["8rem"]}
+      py={["8rem"]}
       minH={["", "100vh"]}
       width="full"
       scrollSnapAlign={"center"}
       flexDir={"column"}
-      gap="4rem"
+      gap={["4rem"]}
       position="relative"
     >
       <Text
         fontWeight="bold"
-        fontSize="4xl"
+        fontSize={["3xl", "4xl"]}
         _hover={{ cursor: "pointer" }}
         textColor={isDarkMode ? "white" : "black"}
         className={raleway.className}

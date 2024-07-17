@@ -14,6 +14,8 @@ import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { Image } from "@/components";
+import Link from "next/link";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface ExperienceProps {
   experience: Experience;
@@ -21,6 +23,7 @@ interface ExperienceProps {
 const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
   const { isDarkMode } = useContext(ThemeContext);
   const { isOpen, onToggle } = useDisclosure();
+  const isDesktop = useMediaQuery(992);
   return (
     <ListItem
       gap="1rem"
@@ -41,21 +44,43 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
         />
       )}
       <Flex w="full" flexDir={"column"}>
-        <Flex w="full" h={"4rem"}>
-          <Text
-            ml="0"
-            mr="auto"
-            fontSize="xl"
-            fontWeight={"bold"}
-            textColor={isDarkMode ? "white" : "black"}
+        <Flex w="full" h={["6rem", "4rem"]}>
+          <Flex
+            flexDir={"column"}
             className={quicksand.className}
+            fontWeight={"bold"}
+            gap="0.5rem"
           >
-            {experience.title}
-          </Text>
-          <Flex maxW="30%" mr="0" ml="auto" gap="1rem">
-            <Flex flexDir={"column"} className={quicksand.className}>
+            <Text
+              ml="0"
+              mr="auto"
+              fontSize={["lg", "xl"]}
+              maxW={["10rem", "20rem"]}
+              textColor={isDarkMode ? "white" : "black"}
+            >
+              {experience.title}
+            </Text>
+            {!isDesktop && (
+              <TextTransition
+                springConfig={presets.default}
+                inline
+                className={`dark:text-white text-base text-black ml-0 mr-auto`}
+              >
+                {isOpen
+                  ? `${experience.startDate} - ${experience.endDate}`
+                  : ""}
+              </TextTransition>
+            )}
+          </Flex>
+
+          <Flex maxW={"50%"} mr="0" ml="auto" gap={["0.5rem", "1rem"]}>
+            <Flex
+              flexDir={"column"}
+              className={quicksand.className}
+              fontWeight={"bold"}
+            >
               {experience.companyWebsite ? (
-                <a
+                <Link
                   href={experience.companyWebsite}
                   target="_blank"
                   rel="noreferrer"
@@ -63,31 +88,39 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                   <TextTransition
                     springConfig={presets.stiff}
                     inline
-                    className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
+                    className={`dark:text-white text-black text-lg md:text-xl mr-0 ml-auto`}
                   >
-                    {isOpen ? experience.company : experience.companyShortName}
+                    {isOpen && isDesktop
+                      ? experience.company
+                      : experience.companyShortName}
                   </TextTransition>
-                </a>
+                </Link>
               ) : (
                 <TextTransition
                   springConfig={presets.stiff}
                   inline
-                  className={`dark:text-white font-bold text-black text-xl mr-0 ml-auto`}
+                  className={`dark:text-white text-black text-lg md:text-xl mr-0 ml-auto`}
                 >
-                  {isOpen ? experience.company : experience.companyShortName}
+                  {isOpen && isDesktop
+                    ? experience.company
+                    : experience.companyShortName}
                 </TextTransition>
               )}
 
-              <TextTransition
-                springConfig={presets.stiff}
-                inline
-                className={`dark:text-white text-md font-bold text-black mr-0 ml-auto`}
-              >
-                {isOpen && `${experience.startDate} - ${experience.endDate}`}
-              </TextTransition>
+              {isDesktop && (
+                <TextTransition
+                  springConfig={presets.stiff}
+                  inline
+                  className={`dark:text-white text-base text-black mr-0 ml-auto`}
+                >
+                  {isOpen
+                    ? `${experience.startDate} - ${experience.endDate}`
+                    : ""}
+                </TextTransition>
+              )}
             </Flex>
             {experience.companyWebsite ? (
-              <a
+              <Link
                 href={experience.companyWebsite}
                 target="_blank"
                 rel="noreferrer"
@@ -103,7 +136,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                     experience.companyShortName === "NBS" ? "" : "dark:invert"
                   }`}
                 />
-              </a>
+              </Link>
             ) : (
               <Image
                 src={experience.companyLogo}
@@ -126,18 +159,19 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             textColor={isDarkMode ? "white" : "black"}
             overflowY="scroll"
             lineHeight={"1.75rem"}
-            fontSize={"lg"}
+            fontSize={["md", "lg"]}
             fontWeight={550}
             maxH={["10rem"]}
-            maxW={["90%"]}
+            maxW={["85%"]}
             mb="2rem"
+            mt={["1rem", null, null, "0rem"]}
           >
             {experience.description}
           </Text>
           <Flex
             textColor={isDarkMode ? "white" : "black"}
             alignItems={"center"}
-            gap="1.5rem"
+            gap={["1rem", "1.5rem"]}
             maxW={"80%"}
             flexWrap={"wrap"}
             mb="2rem"
@@ -148,6 +182,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
                 py="0.25rem"
+                fontSize={["sm", "md"]}
                 fontWeight={"semibold"}
                 className={open_sans.className}
                 key={i + skill}

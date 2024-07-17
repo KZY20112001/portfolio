@@ -10,13 +10,7 @@ const Loading: FC<LoadingProps> = () => {
   const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <Flex
-      justifyContent={"center"}
-      alignItems={"center"}
-      h="xl"
-      w="full"
-      gap="1rem"
-    >
+    <Flex justifyContent={"center"} alignItems={"center"} gap="1rem">
       <TailSpin stroke={isDarkMode ? "white" : "black"} />
       <Text
         textColor={isDarkMode ? "white" : "black"}

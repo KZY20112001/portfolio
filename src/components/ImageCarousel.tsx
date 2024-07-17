@@ -5,12 +5,15 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Image from "@/components/CustomImage";
 import { raleway } from "@/app/fonts";
+import useMediaQuery from "@/hooks/useMediaQuery";
 interface ImageCarouselProps {
   images: string[];
 }
 const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const isTablet = useMediaQuery(750);
+  const isDesktop = useMediaQuery(992);
 
   const variants = {
     enter: (direction: number) => ({
@@ -68,8 +71,8 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
             zIndex={10}
             src={images[currentIndex]!}
             objectFit={"contain"}
-            width="600"
-            height="350"
+            width={isDesktop ? 600 : isTablet ? 450 : 250}
+            height={isDesktop ? 350 : isTablet ? 275 : 200}
             alt="thumbnail"
             cursor={"pointer"}
             placeholder="blur"
@@ -102,16 +105,17 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
             width="100%"
             justify="space-between"
             transform="translateY(-50%)"
+            zIndex={50}
           >
             <IoIosArrowBack
               onClick={prevImage}
-              className={`cursor-pointer m-8 dark:invert ${
+              className={`cursor-pointer m-2 md:m-8 dark:invert ${
                 currentIndex === 0 ? "invisible" : "visible"
               }`}
             />
             <IoIosArrowForward
               onClick={nextImage}
-              className={`cursor-pointer m-8 dark:invert ${
+              className={`cursor-pointer m-2 md:m-8 dark:invert ${
                 currentIndex === images.length - 1 ? "invisible" : "visible"
               }`}
             />

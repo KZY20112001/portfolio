@@ -57,6 +57,8 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               fontSize={["lg", "xl"]}
               maxW={["10rem", "20rem"]}
               textColor={isDarkMode ? "white" : "black"}
+              cursor={"pointer"}
+              onClick={onToggle}
             >
               {experience.title}
             </Text>

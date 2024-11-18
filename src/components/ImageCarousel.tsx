@@ -1,6 +1,6 @@
 import { HStack, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import Image from "@/components/CustomImage";

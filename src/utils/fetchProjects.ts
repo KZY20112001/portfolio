@@ -18,6 +18,7 @@ type ProjectData = {
   description: string;
   thumbnail: Thumbnail;
   mediaType: "images" | "video";
+  website: string, 
   video: Video | null;
   images: Image[] | null;
   techstack: TechStack[];
@@ -32,6 +33,7 @@ const mapProjectDataToProject = (projectData: ProjectData): Project => {
     organization: projectData.organization,
     organizationShortName: projectData.organizationShortName,
     description: projectData.description,
+    website: projectData.website, 
     thumbnail: projectData.thumbnail.url,
     techStack: projectData.techstack.map((tech) => tech.name),
   };
@@ -60,6 +62,7 @@ export const fetchProjects = async () => {
             organizationShortName
             description
             mediaType
+            website
             video {
                 url
             }

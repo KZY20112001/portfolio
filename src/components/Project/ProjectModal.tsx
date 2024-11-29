@@ -93,7 +93,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
               rel="noreferrer"
             >
               {project?.name}{" "}
-              <FaExternalLinkSquareAlt className="mt-1.5 md:mt-4" size={15} />
+              <FaExternalLinkSquareAlt className="mt-1.5 md:mt-4" size={13} />
             </Link>
           ) : (
             <Text>{project?.name}</Text>

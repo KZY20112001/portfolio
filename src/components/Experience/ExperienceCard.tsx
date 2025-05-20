@@ -1,4 +1,7 @@
+import NextLink from "next/link";
+import React, { FC, useContext } from "react";
 import {
+  Link as ChakraLink,
   ListItem,
   Flex,
   Collapse,
@@ -8,13 +11,10 @@ import {
 import TextTransition, { presets } from "react-text-transition";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 
-import React, { FC, useContext } from "react";
-
 import { quicksand, open_sans } from "@/app/fonts";
 import { ThemeContext } from "@/context/ThemeContext";
 import { Experience } from "@/definitions";
 import { Image } from "@/components";
-import Link from "next/link";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface ExperienceProps {
@@ -55,7 +55,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               ml="0"
               mr="auto"
               fontSize={["lg", "xl"]}
-              maxW={["10rem", "20rem"]}
+              maxW={["15rem", "30rem"]}
               textColor={isDarkMode ? "white" : "black"}
               cursor={"pointer"}
               onClick={onToggle}
@@ -82,21 +82,23 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               fontWeight={"bold"}
             >
               {experience.companyWebsite ? (
-                <Link
-                  href={experience.companyWebsite}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <TextTransition
-                    springConfig={presets.stiff}
-                    inline
-                    className={`dark:text-white text-black text-lg md:text-xl mr-0 ml-auto`}
+                <ChakraLink>
+                  <NextLink
+                    href={experience.companyWebsite}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    {isOpen && isDesktop
-                      ? experience.company
-                      : experience.companyShortName}
-                  </TextTransition>
-                </Link>
+                    <TextTransition
+                      springConfig={presets.stiff}
+                      inline
+                      className={`dark:text-white text-black text-lg md:text-xl mr-0 ml-auto`}
+                    >
+                      {isOpen && isDesktop
+                        ? experience.company
+                        : experience.companyShortName}
+                    </TextTransition>
+                  </NextLink>
+                </ChakraLink>
               ) : (
                 <TextTransition
                   springConfig={presets.stiff}
@@ -122,23 +124,25 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
               )}
             </Flex>
             {experience.companyWebsite ? (
-              <Link
-                href={experience.companyWebsite}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src={experience.companyLogo}
-                  alt="logo"
-                  height={5}
-                  width={5}
-                  mt="0.25rem"
-                  placeholder="blur"
-                  className={`${
-                    experience.companyShortName === "NBS" ? "" : "dark:invert"
-                  }`}
-                />
-              </Link>
+              <ChakraLink>
+                <NextLink
+                  href={experience.companyWebsite}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={experience.companyLogo}
+                    alt="logo"
+                    height={5}
+                    width={5}
+                    mt="0.25rem"
+                    placeholder="blur"
+                    className={`${
+                      experience.companyShortName === "NBS" ? "" : "dark:invert"
+                    }`}
+                  />
+                </NextLink>
+              </ChakraLink>
             ) : (
               <Image
                 src={experience.companyLogo}
@@ -179,7 +183,7 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
             mb="2rem"
           >
             {experience.techStack.map((skill, i) => (
-              <Text
+              <ChakraLink
                 borderRadius="md"
                 bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
                 px="1rem"
@@ -190,8 +194,16 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 key={i + skill}
                 _hover={{ cursor: "pointer" }}
               >
-                {skill}
-              </Text>
+                <NextLink
+                  href={`https://www.google.com/search?q=${encodeURIComponent(
+                    skill
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {skill}
+                </NextLink>
+              </ChakraLink>
             ))}
           </Flex>
         </Collapse>

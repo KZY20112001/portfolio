@@ -1,5 +1,8 @@
+import NextLink from "next/link";
+import { FC, useContext } from "react";
 import { open_sans, quicksand, raleway } from "@/app/fonts";
 import {
+  Link as ChakraLink,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -14,9 +17,6 @@ import {
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 
 import ReactPlayer from "react-player";
-
-import { FC, useContext } from "react";
-import Link from "next/link";
 
 import { ThemeContext } from "@/context/ThemeContext";
 import { Project } from "@/definitions";
@@ -86,15 +86,15 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
           className={quicksand.className}
         >
           {project?.website ? (
-            <Link
+            <NextLink
               href={project?.website}
               className="cursor-pointer flex gap-3"
               target="_blank"
               rel="noreferrer"
             >
-              {project?.name}{" "}
+              {project?.name}
               <FaExternalLinkSquareAlt className="mt-1.5 md:mt-4" size={13} />
-            </Link>
+            </NextLink>
           ) : (
             <Text>{project?.name}</Text>
           )}
@@ -121,19 +121,27 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen, onClose, project }) => {
             flexWrap={"wrap"}
           >
             {project?.techStack.map((skill, i) => (
-              <Text
+              <ChakraLink
                 borderRadius="md"
                 bgColor={isDarkMode ? "#212934" : "#f3f1f1"}
-                px={["1rem"]}
-                py={["0.25rem"]}
-                fontWeight={"semibold"}
+                px="1rem"
+                py="0.25rem"
                 fontSize={["sm", "md"]}
+                fontWeight={"semibold"}
                 className={open_sans.className}
                 key={i + skill}
                 _hover={{ cursor: "pointer" }}
               >
-                {skill}
-              </Text>
+                <NextLink
+                  href={`https://www.google.com/search?q=${encodeURIComponent(
+                    skill
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {skill}
+                </NextLink>
+              </ChakraLink>
             ))}
           </Flex>
         </ModalBody>

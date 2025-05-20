@@ -29,7 +29,7 @@ export const fetchTechnicalSkills = async () => {
             url
             }
         }
-        allOtherSkills(orderBy: name_DESC) {
+        allOtherSkills(orderBy: name_ASC) {
             name
             logo {
             url

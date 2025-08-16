@@ -15,7 +15,7 @@ type ExperienceData = {
   companyShortName: string;
   description: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   companyWebsite?: string;
   companyLogo: CompanyLogo;
   techstack: TechStack[];
@@ -73,7 +73,7 @@ export const fetchExperiences = async () => {
     companyShortName: item.companyShortName,
     description: item.description,
     startDate: formatDate(item.startDate),
-    endDate: formatDate(item.endDate),
+    endDate: item.endDate ? formatDate(item.endDate) : "Present",
     techStack: item.techstack.map((tech) => tech.name),
     companyWebsite: item.companyWebsite,
     companyLogo: item.companyLogo.url,

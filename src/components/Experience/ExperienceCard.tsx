@@ -20,6 +20,8 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 interface ExperienceProps {
   experience: Experience;
 }
+
+const noDarkModeCompananies = ["NBS", "SHIELD"];
 const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
   const { isDarkMode } = useContext(ThemeContext);
   const { isOpen, onToggle } = useDisclosure();
@@ -138,7 +140,11 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                     mt="0.25rem"
                     placeholder="blur"
                     className={`${
-                      experience.companyShortName === "NBS" ? "" : "dark:invert"
+                      noDarkModeCompananies.includes(
+                        experience.companyShortName
+                      )
+                        ? ""
+                        : "dark:invert"
                     }`}
                   />
                 </NextLink>
@@ -152,7 +158,9 @@ const ExperienceCard: FC<ExperienceProps> = ({ experience }) => {
                 mt="0.25rem"
                 placeholder="blur"
                 className={`${
-                  experience.companyShortName === "NBS" ? "" : "dark:invert"
+                  noDarkModeCompananies.includes(experience.companyShortName)
+                    ? ""
+                    : "dark:invert"
                 }`}
               />
             )}
